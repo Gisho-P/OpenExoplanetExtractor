@@ -3,7 +3,7 @@ Conversion Columns
 
 pl_hostname = Host Name
 st_tefferr = Stellar Effective Temperature (K)
-st_masserr2 = ???
+st_masserr2 = Stellar Mass err2
 pl_orbsmaxerr1 = Semi-Major Axis err1
 pl_discmethod = Discovery method 
 st_disterr1 = Stellar Distance err1
