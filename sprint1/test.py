@@ -7,16 +7,16 @@ import collections
 
 
 def readNASAExoplanetArchive():
-    
+
     url = "http://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json"
     data = urllib.request.urlopen(url).read().decode('utf-8')
     a = json.loads(data)
     print(a)
 
-    
+
 # Needs some fixing reading CSV files
 def readExoplaneteu():
-    
+
     url = "http://exoplanet.eu/catalog/csv/"
     data = urllib.request.urlopen(url).read().decode('utf-8')
     cat = {}
@@ -25,7 +25,7 @@ def readExoplaneteu():
     	temp = line.split(",")
     	cat[temp[0]] = temp[1:]
     print(cat)
-    
+
 def readOEC():
     data = open('test.xml').read()
     result = xmltodict.parse(data, dict_constructor=dict)
@@ -33,7 +33,7 @@ def readOEC():
 
 
 def dicttoXML(data):
-    result = dicttoxml.dicttoxml(data)
+    result = dicttoxml.dicttoxml(data, root=False, attr_type=False)
     print(result)
 
 
