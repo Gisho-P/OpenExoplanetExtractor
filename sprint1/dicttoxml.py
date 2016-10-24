@@ -225,6 +225,7 @@ def convert_dict(obj, ids, parent, attr_type, item_func, cdata):
         elif isinstance(val, dict):
             if attr_type:
                 attr['type'] = get_xml_type(val)
+            # in the case that the values are attributes in xml
             if "#text" in val:
                 newline = '<%s' % key
                 for key2, val2 in list(val.items()):
@@ -232,7 +233,6 @@ def convert_dict(obj, ids, parent, attr_type, item_func, cdata):
                         newline += ' %s="%s"' % (key2[1:], val2)
                 newline += '>%s</%s>' % (val["#text"], key)
                 addline(newline)
-                print(newline)
             else:
                 addline('<%s%s>%s</%s>' % (
                     key, make_attrstring(attr),
@@ -245,11 +245,8 @@ def convert_dict(obj, ids, parent, attr_type, item_func, cdata):
             if attr_type:
                 attr['type'] = get_xml_type(val)
 
-            addline('<%s%s>%s</%s>' % (
-                key,
-                make_attrstring(attr),
-                convert_list(val, ids, key, attr_type, item_func, cdata),
-                key
+            addline('%s' % (
+                convert_list(val, ids, key, attr_type, item_func, cdata)
                 )
             )
 
@@ -277,47 +274,48 @@ def convert_list(items, ids, parent, attr_type, item_func, cdata):
 
     for i, item in enumerate(items):
         LOG.info('Looping inside convert_list(): item="%s", item_name="%s", type="%s"' % (
-            unicode_me(item), item_name, type(item).__name__)
+            unicode_me(item), parent, type(item).__name__)
         )
         attr = {} if not ids else { 'id': '%s_%s' % (this_id, i+1) }
         if isinstance(item, numbers.Number) or type(item) in (str, unicode):
-            addline(convert_kv(item_name, item, attr_type, attr, cdata))
+            addline(convert_kv(parent, item, attr_type, attr, cdata))
 
         elif hasattr(item, 'isoformat'): # datetime
-            addline(convert_kv(item_name, item.isoformat(), attr_type, attr, cdata))
+            addline(convert_kv(parent, item.isoformat(), attr_type, attr, cdata))
 
         elif type(item) == bool:
-            addline(convert_bool(item_name, item, attr_type, attr, cdata))
+            addline(convert_bool(parent, item, attr_type, attr, cdata))
 
         elif isinstance(item, dict):
             if not attr_type:
                 addline('<%s>%s</%s>' % (
-                    item_name,
+                    parent,
                     convert_dict(item, ids, parent, attr_type, item_func, cdata),
-                    item_name,
+                    parent,
                     )
                 )
             else:
                 addline('<%s type="dict">%s</%s>' % (
-                    item_name,
+                    parent,
                     convert_dict(item, ids, parent, attr_type, item_func, cdata),
-                    item_name,
+                    parent,
                     )
                 )
 
         elif isinstance(item, collections.Iterable):
             if not attr_type:
                 addline('<%s %s>%s</%s>' % (
-                    item_name, make_attrstring(attr),
-                    convert_list(item, ids, item_name, attr_type, item_func, cdata),
-                    item_name,
+                    parent, make_attrstring(attr),
+                    convert_list(item, ids, parent, attr_type, item_func, cdata),
+                    parent,
                     )
                 )
             else:
+                print(item)
                 addline('<%s type="list"%s>%s</%s>' % (
-                    item_name, make_attrstring(attr),
-                    convert_list(item, ids, item_name, attr_type, item_func, cdata),
-                    item_name,
+                    parent, make_attrstring(attr),
+                    convert_list(item, ids, parent, attr_type, item_func, cdata),
+                    parent,
                     )
                 )
 

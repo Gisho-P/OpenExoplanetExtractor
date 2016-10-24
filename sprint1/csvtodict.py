@@ -16,4 +16,4 @@ def readExoplaneteu():
         cat[temp[0]] = temp[1:]
     print(cat)
 
-#readExoplaneteu()
+readExoplaneteu()

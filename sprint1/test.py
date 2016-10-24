@@ -1,42 +1,21 @@
 import xmltodict
-import json
-import urllib.request
-import csv
+import urllib
 import dicttoxml
 import collections
 
-
-def readNASAExoplanetArchive():
-
-    url = "http://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json"
-    data = urllib.request.urlopen(url).read().decode('utf-8')
-    a = json.loads(data)
-    print(a)
-
-
-# Needs some fixing reading CSV files
-def readExoplaneteu():
-
-    url = "http://exoplanet.eu/catalog/csv/"
-    data = urllib.request.urlopen(url).read().decode('utf-8')
-    cat = {}
-    data = data.split("\n")
-    for line in data:
-    	temp = line.split(",")
-    	cat[temp[0]] = temp[1:]
-    print(cat)
-
 def readOEC():
-    data = open('test.xml').read()
+    url = "https://raw.githubusercontent.com/OpenExoplanetCatalogue/open_exoplanet_catalogue/master/systems/CoRoT-24.xml"
+    data = urllib.request.urlopen(url).read().decode('utf-8')
     result = xmltodict.parse(data, dict_constructor=dict)
-    print(result)
+    return result
 
 
 def dicttoXML(data):
     result = dicttoxml.dicttoxml(data, root=False, attr_type=False)
-    print(result)
+    return result
 
 
 
 
-readOEC()
+print(readOEC())
+print(dicttoXML(readOEC()))
