@@ -15,3 +15,7 @@ Sourches used for Deliverable 3:
 1) https://pypi.python.org/pypi/xmltodict
 2) https://pypi.python.org/pypi/dicttoxml
 These were used for xmltodict.py and dicttoxml.py
+
+How to Run the code:
+
+To run any py files, all the .py files are in the same directory
