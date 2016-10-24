@@ -1,0 +1,224 @@
+Below is the format of the dictionary used to store the data of the planets.
+Next to each entry is the name of the columns that contain that attribute in the csv files
+extracted from exoplanet.eu. The ones with a ? indicate that the csv file
+does not contain that attribute.
+
+{  
+   'system':{  
+      'name':'CoRoT-24', = star_name
+      'rightascension':'06 47 41', = #ra
+      'star':{  
+         'temperature':{  
+            '@errorplus':'150', = star_teff_error_max 
+            '@errorminus':'150', = star_teff_error_min
+            '#text':'4950' = star_teff
+         ),
+         'age':'11', = star_age
+         'name':[  
+            'CoRoT-24', = star_name
+            '2MASS 06474141-0343094' = star_alternate_names
+         ],
+         'magK':{  
+            '@errorplus':'0.024', = ?
+            '@errorminus':'0.024', = ?
+            '#text':'12.924' = mag_k
+         ),
+         'magI':{  
+            '@errorplus':'0.05', = ?
+            '@errorminus':'0.05', = ?
+            '#text':'14.30' = mag_i
+         ),
+         'radius':{  
+            '@errorplus':'0.09', = star_radius_error_max
+            '@errorminus':'0.09', = star_radius_error_min
+            '#text':'0.86' = star_radius
+         ),
+         'magR':{  
+            '@errorplus':'0.22', = ?
+            '@errorminus':'0.22', = ?
+            '#text':'15.60' = ?
+         ),
+         'spectraltype':'K1V', = star_sp_type
+         'planet':[  
+            {  
+               'transittime':{  
+                  '@errorplus':'0.006', = tzero_tr_error_max
+                  '#text':'2454789.611', = tzero_tr
+                  '@errorminus':'0.006', = tzero_tr_error_min
+                  '@unit':'HJD' = ?
+               ),
+               'lastupdate':'14/06/08', = updated
+               'temperature':{  
+                  '@errorplus':'140', = ?
+                  '@errorminus':'140', = ?
+                  '#text':'1070' = temp_calculated
+               ),
+               'discoveryyear':'2014', = discovered
+               'period':{  
+                  '@errorplus':'0.0006', = orbital_period_error_max
+                  '@errorminus':'0.0006', = orbital_period_error_min
+                  '#text':'5.1134' = orbital_period
+               ),
+               'name':[  
+                  'CoRoT-24 b', = #name
+                  '2MASS 06474141-0343094 c' = ?
+               ],
+               'semimajoraxis':{  
+                  '@errorplus':'0.002', = semi_major_axis_error_max
+                  '@errorminus':'0.002', = semi_major_axis_error_min
+                  '#text':'0.056' = semi_major_axis
+               ),
+               'radius':{  
+                  '@errorplus':'0.04', = radius_error_max
+                  '@errorminus':'0.04', = radius_error_min
+                  '#text':'0.33' = radius
+               ),
+               'eccentricity':'0', = eccentricity
+               'istransiting':'1', = ?
+               'discoverymethod':'transit', = ?
+               'description':'CoRoT-24 is the first multiplanetary system discovered by the CoRoT mission. The probability that the observations are caused by transiting Neptune-sized planets is 26 times more likely than a blend scenario.', = ?
+               'inclination':{  
+                  '@errorplus':'2', = inclination_error_max
+                  '@errorminus':'2', = inclination_error_min
+                  '#text':'86.5' = inclination
+               ),
+               'list':'Confirmed planets', = ?
+               'mass':{  
+                  '@upperlimit':'0.018' = mass
+               }
+            ),
+            {  
+               'transittime':{  
+                  '@errorplus':'0.0265', = ?
+                  '#text':'2454795.3803', = ?
+                  '@errorminus':'0.0265', = ?
+                  '@unit':'HJD' = ?
+               ),
+               'lastupdate':'14/06/08', = updated
+               'temperature':{  
+                  '@errorplus':'80', = ?
+                  '@errorminus':'80', = ?
+                  '#text':'850' = ?
+               ),
+               'discoveryyear':'2014', = discovered
+               'name':[  
+                  'CoRoT-24 c', = ?
+                  '2MASS 06474141-0343094 c' = ?
+               ],
+               'semimajoraxis':{  
+                  '@errorplus':'0.003', = semi_major_axis_error_max
+                  '@errorminus':'0.003', = semi_major_axis_error_min
+                  '#text':'0.098' = semi_major_axis
+               ),
+               'radius':{  
+                  '@errorplus':'0.04', = radius_error_max
+                  '@errorminus':'0.04', = radius_error_min
+                  '#text':'0.44' = radius
+               ),
+               'description':'CoRoT-24 is the first multiplanetary system discovered by the CoRoT mission. The probability that the observations are caused by transiting Neptune-sized planets is 26 times more likely than a blend scenario.', = ?
+               'eccentricity':'0', = eccentricity
+               'istransiting':'1', = ?
+               'discoverymethod':'transit', = ?
+               'period':{  
+                  '@errorplus':'0.0063', = ?
+                  '@errorminus':'0.0063', = ?
+                  '#text':'11.759' = ?
+               ),
+               'inclination':{  
+                  '@errorplus':'1', = inclination_error_max
+                  '@errorminus':'1.6', = inclination_error_min
+                  '#text':'89' = inclination
+               ),
+               'list':'Confirmed planets', = ?
+               'mass':{  
+                  '@errorplus':'0.035', = ?
+                  '@errorminus':'0.035', = ?
+                  '#text':'0.088'= ?
+               }
+            }
+         ],
+         'mass':{  
+            '@errorplus':'0.09', = star_mass_error_max
+            '@errorminus':'0.09', = star_mass_error_min
+            '#text':'0.91' = star_mass
+         ),
+         'metallicity':{  
+            '@errorplus':'0.15', = star_metallicity_error_max
+            '@errorminus':'0.15', = star_metallicity_error_min
+            '#text':'0.3' = star_metallicity
+         ),
+         'magJ':{  
+            '@errorplus':'0.021', = ?
+            '@errorminus':'0.021', = ?
+            '#text':'13.595' = mag_j
+         ),
+         'magH':{  
+            '@errorplus':'0.03', = ?
+            '@errorminus':'0.03', = ?
+            '#text':'13.05' = mag_h
+         }
+      ),
+      'distance':{  
+         '@errorplus':'70', = star_distance_error_max
+         '@errorminus':'70', = star_distance_error_min
+         '#text':'600' = star_distance
+      ),
+      'declination':'-03 43 10' = ?
+   }
+}
+
+NOT USED
+
+mass_error_min
+mass_error
+mass_error_min
+mass_error_max
+mass_sini
+mass_sini_error_min
+mass_sini_error_max
+eccentricity_error_min
+eccentricity_error_max
+angular_distance
+omega
+omega_error_min
+omega_error_max 
+tperi
+tperi_error_min
+tperi_error_max
+tconj
+tconj_error_min
+tconj_error_max
+tzero_tr_sec
+tzero_tr_sec_error_min
+tzero_tr_sec_error_max
+lambda_angle
+lambda_angle_error_min
+lambda_angle_error_max
+impact_parameter
+impact_parameter_error_min
+impact_parameter_error_max
+tzero_vr
+tzero_vr_error_min
+tzero_vr_error_max
+k
+k_error_min
+k_error_max
+temp_measured
+hot_point_lon
+geometric_albedo
+geometric_albedo_error_min
+geometric_albedo_error_max
+log_g
+publication_status
+detection_type
+mass_detection_type
+radius_detection_type
+alternate_names
+molecules
+dec
+mag_v
+star_age_error_min
+star_age_error_max
+star_detected_disc
+star_magnetic_field
+
