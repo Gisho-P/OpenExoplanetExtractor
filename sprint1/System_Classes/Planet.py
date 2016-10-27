@@ -47,9 +47,9 @@ class Planet():
         self.description = self.planet_dict['description']
 
         self.transit_time = self.planet_dict['transittime']
-        self.transit_time_error_minus = self.planet_dict['semimajoraxis']
+        self.transit_time_error_minus = self.planet_dict['transittime']
         ['@errorminus']
-        self.transit_time_error_plus = self.planet_dict['semimajoraxis']
+        self.transit_time_error_plus = self.planet_dict['transittime']
         ['@errorplus']
 
         self.is_transiting = self.planet_dict['istransiting']
