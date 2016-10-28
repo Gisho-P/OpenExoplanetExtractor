@@ -59,3 +59,6 @@ class Star():
         ['@errorplus']
 
         self.spectral_type = self.star_dict['spectraltype']
+
+    def update(self, other):
+        
