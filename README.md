@@ -11,11 +11,11 @@ Deliverable 3:
 This is our Deliverable3 file, it contains our release plan, updated user stories,
 product backlog and more.
 
-Sourches used for Deliverable 3:
+Sources used for Deliverable 3:
 1) https://pypi.python.org/pypi/xmltodict
 2) https://pypi.python.org/pypi/dicttoxml
 These were used for xmltodict.py and dicttoxml.py
 
 How to Run the code:
 To run any py files, all the .py files are in the same directory
-The deliverbale 3 part 2 report is located under sprint1->Documentation
+The deliverable 3 part 2 report is located under sprint1->Documentation
