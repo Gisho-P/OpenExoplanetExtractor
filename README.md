@@ -19,3 +19,6 @@ These were used for xmltodict.py and dicttoxml.py
 How to Run the code:
 To run any py files, all the .py files are in the same directory
 The deliverable 3 part 2 report is located under sprint1->Documentation
+
+Sources Used for Deliverable 4:
+1) https://pypi.python.org/pypi/gitdict/0.1.2
