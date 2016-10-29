@@ -1,8 +1,13 @@
 import collections
 import Star
 
-class Systems():
+class System
 
+	'''(System, Dictionary) -> NoneType
+	Initialises the System object, which also initialises the Star
+	and Planet objects.
+	Requires the dictionary representation of a System
+	'''
     def __init__(self, system_dict):
 	
 	self.system_dict = system_dict
@@ -23,3 +28,39 @@ class Systems():
 	['@errorminus']
     	self.distance_error_plus = self.system_dict['system']['distance']
 	['@errorplus']
+
+	'''(System, System) -> list(list(string))
+	Takes another System and compares the values and updates it to other's
+	values.
+	Returns a list of all the updated values
+	'''
+	def update(self, other):
+		updates = []
+
+		update_system_values(updates)
+
+		for star in self.star():
+			star_updates = self.star.update()
+			updates = {**updates, **star_updates}
+
+
+	def update_system_values(updates):
+		if not self.name == other.name:
+			self.name = other.name
+			updates.add(['system', 'name'])
+
+		if not self.right_ascension == other.right_ascension:
+			self.right_ascension = other.right_ascension
+			updates.add(['system', 'rightascension'])
+
+		if not self.declination == other.declination:
+			self.declination = other.declination
+			updates.add['system', 'declination']
+
+		if not self.distance_error_minus == other.distance_error_minus:
+			self.distance_error_minus = other.distance_error_minus
+			updates.add(['system', 'distance', '@errorminus'])
+
+		if not self.distance_error_plus == other.distance_error_plus:
+			self.distance_error_plus = other.distance_error_plus
+			updates.add(['system', 'distance', '@errorplus'])

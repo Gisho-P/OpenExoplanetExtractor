@@ -54,3 +54,6 @@ class Planet():
 
         self.is_transiting = self.planet_dict['istransiting']
         self.discovery_year = self.planet_dict['discoveryyear']
+
+    def update(self, other):
+        
