@@ -29,35 +29,35 @@ class System():
     	self.distance_error_plus = self.system_dict['system'][
 	    'distance']['@errorplus']
 
-	'''(System, System) -> list(list(string))
-	Takes another System and compares the values and updates it to other's
-	values.
-	Returns a list of all the updated values
-	'''
-	def update(self, other):
+    '''(System, System) -> list(list(string))
+    Takes another System and compares the values and updates it to other's
+    values.
+    Returns a list of all the updated values
+    '''
+    def update(self, other):
 
-	    updates = update_system_values(other)
-    
-	    for star in self.star():
-		star_updates = self.star.update()
-		updates += star_updates
+	updates = update_system_values(other)
 
-	    return updates
+	for star in self.star():
+	    star_updates = self.star.update()
+	    updates += star_updates
+
+	return updates
 
 
-	def update_system_values(other):
-	    updates = []
-	    if not self.name == other.name:
-		updates.add(['system', 'name'])
+    def update_system_values(other):
+	updates = []
+	if not self.name == other.name:
+	    updates.add(['system', 'name'])
 
-	    if not self.right_ascension == other.right_ascension:
-		updates.add(['system', 'rightascension'])
+	if not self.right_ascension == other.right_ascension:
+	    updates.add(['system', 'rightascension'])
 
-	    if not self.declination == other.declination:
-		updates.add['system', 'declination']
+	if not self.declination == other.declination:
+	    updates.add['system', 'declination']
 
-	    if not self.distance_error_minus == other.distance_error_minus:
-		updates.add(['system', 'distance', '@errorminus'])
+	if not self.distance_error_minus == other.distance_error_minus:
+	    updates.add(['system', 'distance', '@errorminus'])
 
-	    if not self.distance_error_plus == other.distance_error_plus:
-		updates.add(['system', 'distance', '@errorplus'])
+	if not self.distance_error_plus == other.distance_error_plus:
+	    updates.add(['system', 'distance', '@errorplus'])

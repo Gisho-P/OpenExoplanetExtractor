@@ -123,22 +123,33 @@ class Star():
             'radius']['@errorplus']:
             updates.append(['system', 'star', 'radius', '@errorplus'])
 
-        self.temperature = self.star_dict['temperature']
-        self.temperature_error_minus = self.star_dict['temperature']
-        ['@errorminus']
-        self.temperature_error_plus = self.star_dict['temperature']
-        ['@errorplus']
+        if not self.temperature == self.star_dict['temperature']:
+            updates.append(['system', 'star', 'temperature'])
+        if not self.temperature_error_minus == self.star_dict[
+            'temperature']['@errorminus']:
+            updates.append(['system', 'star', 'temperature', '@errorminus'])
+        if not self.temperature_error_plus == self.star_dict[
+            'temperature']['@errorplus']:
+            updates.append(['system', 'star', 'temperature', '@errorplus'])
 
-        self.mag_J = self.star_dict['magJ']
-        self.mag_J_error_minus = self.star_dict['magJ']['@errorminus']
-        self.mag_J_error_plus = self.star_dict['magJ']['@errorplus']
+        if not self.mag_J == self.star_dict['magJ']:
+            updates.append(['system', 'star', 'magJ'])
+        if not self.mag_J_error_minus == self.star_dict['magJ']['@errorminus']:
+            updates.append(['system', 'star', 'magJ', '@errorminus'])
+        if not self.mag_J_error_plus == self.star_dict['magJ']['@errorplus']:
+            updates.append(['system', 'star', 'magJ', '@errorplus'])
 
-        self.age = self.star_dict['age']
+        if not self.age == self.star_dict['age']:
+            updates.append(['system', 'star', 'age'])
 
-        self.metallicity = self.star_dict['metallicity']
-        self.metallicity_error_minus = self.star_dict['metallicity']
-        ['@errorminus']
-        self.metallicity_error_plus = self.star_dict['metallicity']
-        ['@errorplus']
+        if not self.metallicity == self.star_dict['metallicity']:
+            updates.append(['system', 'star', 'metallicity'])
+        if not self.metallicity_error_minus == self.star_dict[
+            'metallicity']['@errorminus']:
+            updates.append(['system', 'star', 'metallicity', '@errorminus'])
+        if not self.metallicity_error_plus == self.star_dict[
+            'metallicity']['@errorplus']:
+            updates.append(['system', 'star', 'metallicity', '@errorplus'])
 
-        self.spectral_type = self.star_dict['spectraltype']
+        if not self.spectral_type == self.star_dict['spectraltype']:
+            updates.append(['system', 'star', 'spectraltype'])
