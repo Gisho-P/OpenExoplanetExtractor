@@ -1,0 +1,25 @@
+
+
+Conflict on Merging
+--------------------------------------
+Conflict Merging in System, [optional] Star, [optional] Planet
+
+1) System, conflict for x entry, Your side:New
+2) Star, conflict for y entry, Your side:New
+3) Planet, conflict for z entry, Your side:New 
+
+
+Choose what you want to do?
+(MY): Keep my side of the conflict 
+(GO): Merge your side of the conflict
+(C): Choose individual conflicts
+
+
+# If the user chooses option C:
+
+Choose the conflict number to merge into the catalogue:
+# prompt the user to input the numbers to the conflict to merge into the catalogue 
+
+
+
+
