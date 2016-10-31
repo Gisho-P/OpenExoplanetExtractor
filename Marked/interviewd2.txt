@@ -1,0 +1,118 @@
+
+An interview is <= 30 min long. Of course, this is not enough time for
+the team to present and explain their entire deliverable. So, we will
+need careful planning.
+
+Most teams have 5 members at the moment. Each team member needs to
+actively participate during the interview for the team to get full
+marks for the interview.
+
+Please, make notes -- I will want to keep them for my records. Do not
+assign the grade at this point. We will all meet after all interviews
+have been completed and decide on grades there. You can explain this
+to the teams in advance. We do so to make sure we are as consistent as
+possible in grading.
+
+Here is the format I'm hoping you will follow. As always with
+interviews, you will need to be flexible. 
+
+1) The process [2]: 2
+
+ Ask for a volunteer to give an overview of the process of completing
+ the deliverable. How did they organize themselves, is there a leader
+ of any kind, did they assign responsibilities, etc.  Look for
+ evidence of making informed decisions, not simply "X and Y had time
+ after MAT on Monday, so they came up with a product backlog."
+ [see Note below]
+
+-majority of what they did was get together (code jams)
+-came up with many ideas an compiled it at the end
+-democratically pruned the user stories and personas
+-no seperate roles, everyone was working together
+-group effort with compiling
+
+2) Personas [2]: 2
+
+ Ask for a volunteer to explain the process of coming up with their
+ personas (not "in theory", but what they actually did).  Ask
+ follow-up questions until you're fully satisfied that he or she knows
+ what they're talking about. [see Note below]
+
+-listened to Hanno during tutorial and asked him some questions
+-also looked at lecture slides for the project (Hanno)
+-developed two personas (John Smith was based off Hanno)
+-the other Alice Brown completely opposite personality to Hanno
+-had an idea for a grad student but, overlapped with John Smith too much
+
+
+
+3) Product Backlog [2]: 2
+
+ Ask for a volunteer to explain the process of coming up with a
+ product backlog (not "in theory", but what they actually did).  Ask
+ follow-up questions until you're fully satisfied that he or she knows
+ what they're talking about. [see Note below]
+
+-first tried to agree on what Hanno wanted
+-choose command line option from Hanno
+-tried to allow Hanno to configure and customize the application
+-looked at it from point of view from Hanno
+-mainly looked at Hanno's slides for requirements
+-ask Hanno for feature ideas and wrote down other people's questions
+-in another tutorial, they asked librarians
+
+-generated a few user stories independtly, but the vast majority
+was done collaboratively and democratically
+
+4) Details of User Stories [2]: 2
+
+ Ask for a volunteer. Select two user stories from two different
+ personas and ask this volunteer to explain these two user stories.
+ [see Note below]
+
+
+individually resolving conflicts (#4)
+-it would work like version control
+-like the conflicts in a git merge, and then you would decide which one you would like to merge in (correct)
+-like how subversion handles it
+-one case that could cause conflicts:
+    an existing planet in your catalogue has different information versus the planet
+    update
+-conflicting data for a pre existing entry
+
+
+alice (#1)
+-wants the application to take of things for her
+-wants the catalogue to always be up to date within a certain time slot
+-does not want to manually update
+-have some timeframe where it would update (like once a week)
+-should have a default timeframe (john may be able to set this)
+-it would then check other catlogues and download it, and then it would try to merge
+them
+
+
+
+5) Sprint Backlog [2]: 2
+
+  Ask the remaining team member to explain how the team will choose
+  the user stories for the Sprint Backlog. Have him/her point out user
+  stories from their Product Backlog that are likely to be chosen.
+  [see Note below]
+
+-going to look a product backlog and then assign a prioity to each user story
+as well as a time estimate
+-highest priority first, and time stamps will be used to assign tasks evenly to
+each member
+-at the end of each sprint plan the next sprint
+
+[Note] If nobody volunteers or if nobody is able to give an adequate
+ answer, the team does not get this grade.  This volunteer is not
+ allowed to volunteer again (except for the last question, if the team
+ has 4 members). If a team member declares to be unable to answer
+ his/her question, then other members are allowed to help. If the
+ collective answer is correct, the team get half the marks for that
+ question.
+
+
+Needless to say, please, take this opportunity to offer as much help
+and feedback as possible.
