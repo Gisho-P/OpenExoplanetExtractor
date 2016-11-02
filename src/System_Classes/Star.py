@@ -70,7 +70,7 @@ class Star():
         updates = update_star_values(other)
         
         for i, planet in enumerate(self.planets):
-            updates.update(planet.update(planet[i]))
+            updates.update(planet.update(planet[i]), system_name, self.star_dict['name'])
         
         return updates
 
