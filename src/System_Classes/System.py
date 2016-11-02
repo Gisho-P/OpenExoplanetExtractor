@@ -48,16 +48,16 @@ class System():
     def update_system_values(other):
 	updates = []
 	if not self.name == other.name:
-	    updates.add(['system', self.system_dict['name']])
+	    updates.add([self.system_dict['name']])
 
 	if not self.right_ascension == other.right_ascension:
-	    updates.add(['system', self.system_dict['name'], 'rightascension'])
+	    updates.add([self.system_dict['name'], 'rightascension'])
 
 	if not self.declination == other.declination:
-	    updates.add['system', self.system_dict['name'], 'declination']
+	    updates.add[elf.system_dict['name'], 'declination']
 
 	if not self.distance_error_minus == other.distance_error_minus:
-	    updates.add(['system', self.system_dict['name'], 'distance', '@errorminus'])
+	    updates.add([self.system_dict['name'], 'distance', '@errorminus'])
 
 	if not self.distance_error_plus == other.distance_error_plus:
-	    updates.add(['system', self.system_dict['name'], 'distance', '@errorplus'])
+	    updates.add([self.system_dict['name'], 'distance', '@errorplus'])
