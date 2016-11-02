@@ -38,7 +38,7 @@ class System():
 
 	updates = update_system_values(other)
 
-	for i, star in enumerate(self.stars()):
+	for i, star in enumerate(self.stars):
 	    star_updates = self.star.update(other.stars[i], self.system_dict['name'])
 	    updates += star_updates
 
