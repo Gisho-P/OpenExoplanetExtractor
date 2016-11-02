@@ -1,13 +1,13 @@
 import collections
 import Star
 
-class System
+class System():
 
-	'''(System, Dictionary) -> NoneType
-	Initialises the System object, which also initialises the Star
-	and Planet objects.
-	Requires the dictionary representation of a System
-	'''
+    '''(System, Dictionary) -> NoneType
+    Initialises the System object, which also initialises the Star
+    and Planet objects.
+    Requires the dictionary representation of a System
+    '''
     def __init__(self, system_dict):
 	
 	self.system_dict = system_dict
@@ -24,43 +24,40 @@ class System
     	self.name = self.system_dict['system']['name']
     	self.right_ascension = self.system_dict['system']['rightascension']
     	self.declination = self.system_dict['system']['declination']
-    	self.distance_error_minus = self.system_dict['system']['distance']
-	['@errorminus']
-    	self.distance_error_plus = self.system_dict['system']['distance']
-	['@errorplus']
+    	self.distance_error_minus = self.system_dict['system'][
+	    'distance']['@errorminus']
+    	self.distance_error_plus = self.system_dict['system'][
+	    'distance']['@errorplus']
 
-	'''(System, System) -> list(list(string))
-	Takes another System and compares the values and updates it to other's
-	values.
-	Returns a list of all the updated values
-	'''
-	def update(self, other):
-		updates = []
+    '''(System, System) -> list(list(string))
+    Takes another System and compares the values and updates it to other's
+    values.
+    Returns a list of all the updated values
+    '''
+    def update(self, other):
 
-		update_system_values(updates)
+	updates = update_system_values(other)
 
-		for star in self.star():
-			star_updates = self.star.update()
-			updates = {**updates, **star_updates}
+	for i, star in enumerate(self.stars):
+	    star_updates = self.star.update(other.stars[i], self.system_dict['name'])
+	    updates += star_updates
+
+	return updates
 
 
-	def update_system_values(updates):
-		if not self.name == other.name:
-			self.name = other.name
-			updates.add(['system', 'name'])
+    def update_system_values(other):
+	updates = []
+	if not self.name == other.name:
+	    updates.add([self.system_dict['name']])
 
-		if not self.right_ascension == other.right_ascension:
-			self.right_ascension = other.right_ascension
-			updates.add(['system', 'rightascension'])
+	if not self.right_ascension == other.right_ascension:
+	    updates.add([self.system_dict['name'], 'rightascension'])
 
-		if not self.declination == other.declination:
-			self.declination = other.declination
-			updates.add['system', 'declination']
+	if not self.declination == other.declination:
+	    updates.add[elf.system_dict['name'], 'declination']
 
-		if not self.distance_error_minus == other.distance_error_minus:
-			self.distance_error_minus = other.distance_error_minus
-			updates.add(['system', 'distance', '@errorminus'])
+	if not self.distance_error_minus == other.distance_error_minus:
+	    updates.add([self.system_dict['name'], 'distance', '@errorminus'])
 
-		if not self.distance_error_plus == other.distance_error_plus:
-			self.distance_error_plus = other.distance_error_plus
-			updates.add(['system', 'distance', '@errorplus'])
+	if not self.distance_error_plus == other.distance_error_plus:
+	    updates.add([self.system_dict['name'], 'distance', '@errorplus'])
