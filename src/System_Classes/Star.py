@@ -65,7 +65,7 @@ class Star():
     values.
     Returns a list of all the updated values
     '''
-    def update(self, other):
+    def update(self, other, system_name):
 
         updates = update_star_values(other)
         
@@ -77,79 +77,79 @@ class Star():
     def update_star_values(other):
         updates = []
         if not self.mag_R_error_minus == self.star_dict['magR']['@errorminus']:
-            updates.append(['system', 'star', 'magR', '@errorminus'])
+            updates.append([system_name, self.star_dict['name'], 'magR', '@errorminus'])
         if not self.mag_R_error_plus == self.star_dict['magR']['@errorplus']:
-            updates.append(['system', 'star', 'magR', '@errorplus'])
+            updates.append([system_name, self.star_dict['name'], 'magR', '@errorplus'])
         if not self.mag_R == self.star_dict['magR']:
-            updates.append(['system', 'star', 'magR'])
+            updates.append([system_name, self.star_dict['name'], 'magR'])
 
         if not self.mag_I_error_minus == self.star_dict['magI']['@errorminus']:
-            updates.append(['system', 'star', 'magI', '@errorminus'])
+            updates.append([system_name, self.star_dict['name'], 'magI', '@errorminus'])
         if not self.mag_I_error_plus == self.star_dict['magI']['@errorplus']:
-            updates.append(['system', 'star', 'magI', '@errorplus'])
+            updates.append([system_name, self.star_dict['name'], 'magI', '@errorplus'])
         if not self.mag_I == self.star_dict['magI']:
-            updates.append(['system', 'star', 'magI'])
+            updates.append([system_name, self.star_dict['name'], 'magI'])
 
         if not self.mag_H_error_minus == self.star_dict['magH']['@errorminus']:
-            updates.append(['system', 'star', 'magH', '@errorminus'])
+            updates.append([system_name, self.star_dict['name'], 'magH', '@errorminus'])
         if not self.mag_H_error_plus == self.star_dict['magH']['@errorplus']:
-            updates.append(['system', 'star', 'magH','@errorplus'])
+            updates.append([system_name, self.star_dict['name'], 'magH', '@errorplus'])
         if not self.mag_H == self.star_dict['magH']:
-            updates.append(['system', 'star', 'magH'])
+            updates.append([system_name, self.star_dict['name'], 'magH'])
 
         if not self.mag_K_error_minus == self.star_dict['magK']['@errorminus']:
-            updates.append(['system', 'star', 'magK', '@errorminus'])
+            updates.append([system_name, self.star_dict['name'], 'magK', '@errorminus'])
         if not self.mag_K_error_plus == self.star_dict['magK']['@errorplus']:
-            updates.append(['system', 'star', 'magK', '@errorplus'])
+            updates.append([system_name, self.star_dict['name'], 'magK', '@errorplus'])
         if not self.mag_K == self.star_dict['magK']:
-            updates.append(['system', 'star', 'magK'])
+            updates.append([system_name, self.star_dict['name'], 'magK'])
 
         if not self.name == self.star_dict['name']:
-            updates.append(['system', 'star', 'name'])
+            updates.append([system_name, self.star_dict['name']])
 
         if not self.mass == self.star_dict['mass']:
-            updates.append(['system', 'star', 'mass'])
+            updates.append([system_name, self.star_dict['name'], 'mass'])
         if not self.mass_error_minus == self.star_dict['mass']['@errorminus']:
-            updates.append(['system', 'star', 'mass', '@errorminus'])
+            updates.append([system_name, self.star_dict['name'], 'mass', '@errorminus'])
         if not self.mass_error_plus == self.star_dict['mass']['@errorplus']:
-            updates.append(['system', 'star', 'mass', '@errorplus'])
+            updates.append([system_name, self.star_dict['name'], 'mass', '@errorplus'])
 
         if not self.radius == self.star_dict['radius']:
-            updates.append(['system', 'star', 'radius'])
+            updates.append([system_name, self.star_dict['name'], 'radius'])
         if not self.radius_error_minus == self.star_dict['radius'][
             '@errorminus']:
-            updates.append(['system', 'star', 'radius', '@errorminus'])
+            updates.append([system_name, self.star_dict['name'], 'radius', '@errorminus'])
         if not self.radius_error_plus == self.star_dict[
             'radius']['@errorplus']:
-            updates.append(['system', 'star', 'radius', '@errorplus'])
+            updates.append([system_name, self.star_dict['name'], 'radius', '@errorplus'])
 
         if not self.temperature == self.star_dict['temperature']:
-            updates.append(['system', 'star', 'temperature'])
+            updates.append([system_name, self.star_dict['name'], 'temperature'])
         if not self.temperature_error_minus == self.star_dict[
             'temperature']['@errorminus']:
-            updates.append(['system', 'star', 'temperature', '@errorminus'])
+            updates.append([system_name, self.star_dict['name'], 'temperature', '@errorminus'])
         if not self.temperature_error_plus == self.star_dict[
             'temperature']['@errorplus']:
-            updates.append(['system', 'star', 'temperature', '@errorplus'])
+            updates.append([system_name, self.star_dict['name'], 'temperature', '@errorplus'])
 
         if not self.mag_J == self.star_dict['magJ']:
-            updates.append(['system', 'star', 'magJ'])
+            updates.append([system_name, self.star_dict['name'], 'magJ'])
         if not self.mag_J_error_minus == self.star_dict['magJ']['@errorminus']:
-            updates.append(['system', 'star', 'magJ', '@errorminus'])
+            updates.append([system_name, self.star_dict['name'], 'magJ', '@errorminus'])
         if not self.mag_J_error_plus == self.star_dict['magJ']['@errorplus']:
-            updates.append(['system', 'star', 'magJ', '@errorplus'])
+            updates.append([system_name, self.star_dict['name'], 'magJ', '@errorplus'])
 
         if not self.age == self.star_dict['age']:
-            updates.append(['system', 'star', 'age'])
+            updates.append([system_name, self.star_dict['name'], 'age'])
 
         if not self.metallicity == self.star_dict['metallicity']:
-            updates.append(['system', 'star', 'metallicity'])
+            updates.append([system_name, self.star_dict['name'], 'metallicity'])
         if not self.metallicity_error_minus == self.star_dict[
             'metallicity']['@errorminus']:
-            updates.append(['system', 'star', 'metallicity', '@errorminus'])
+            updates.append([system_name, self.star_dict['name'], 'metallicity', '@errorminus'])
         if not self.metallicity_error_plus == self.star_dict[
             'metallicity']['@errorplus']:
-            updates.append(['system', 'star', 'metallicity', '@errorplus'])
+            updates.append([system_name, self.star_dict['name'], 'metallicity', '@errorplus'])
 
         if not self.spectral_type == self.star_dict['spectraltype']:
-            updates.append(['system', 'star', 'spectraltype'])
+            updates.append([system_name, self.star_dict['name'], 'spectraltype'])
