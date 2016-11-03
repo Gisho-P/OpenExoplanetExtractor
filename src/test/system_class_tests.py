@@ -29,5 +29,8 @@ class TestContained(unittest.TestCase):
         result = system.stars.planets[1].mass_error_minus == '0.035'
         self.assertTrue(result)
 
+    def test_basic_update(self):
+    	pass
+
 if __name__ == '__main__':
     unittest.main(exit=False)
