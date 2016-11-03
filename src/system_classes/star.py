@@ -1,4 +1,4 @@
-import Planet
+import planet
 
 class Star():
 

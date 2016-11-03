@@ -73,14 +73,14 @@ class Planet():
 
         if self.mass_error_plus == self.planet_dict['mass']['@errorplus']:
             updates.append([system_name, star_name, self.planet_dict[
-                'name'], 'mass', '@errorplus']
+                'name'], 'mass', '@errorplus'])
 
         if self.radius == self.planet_dict['radius']:
             updates.append([system_name, star_name, self.planet_dict['name'], 'radius'])
 
         if self.radius_error_minus == self.planet_dict['radius']['@errorminus']:
             updates.append([system_name, star_name, self.planet_dict[
-                'name'], 'radius', '@errorminus']
+                'name'], 'radius', '@errorminus'])
 
         if self.radius_error_plus == self.planet_dict['radius']['@errorplus']:
             updates.append([system_name, star_name, self.planet_dict[
@@ -109,7 +109,7 @@ class Planet():
 
         if self.period_error_plus == self.planet_dict['period']['@errorplus']:
             updates.append([system_name, star_name, self.planet_dict[
-                'name'], 'period', '@errorplus']
+                'name'], 'period', '@errorplus'])
 
         if self.eccentricity == self.planet_dict['eccentricity']:
             updates.append([system_name, star_name, self.planet_dict['name'], 'eccentricity'])

@@ -1,5 +1,5 @@
 import collections
-import Star
+import star
 
 class System():
 
@@ -12,13 +12,12 @@ class System():
 
         self.system_dict = system_dict
 
-    	initialize_system_dict_values()
+        initialize_system_dict_values()
 
-    	self.stars = []
-    	for star in self.system_dict['system']['star']:
-	    temp_star = Star(star)
-	    self.stars.append(temp_star)
-
+        self.stars = []
+        for star in self.system_dict['system']['star']:
+            temp_star = Star(star)
+            self.stars.append(temp_star)
 
     def initialize_system_dict_values():
     	self.name = self.system_dict['system']['name']
@@ -36,28 +35,28 @@ class System():
     '''
     def update(self, other):
 
-	updates = update_system_values(other)
+        updates = update_system_values(other)
 
-	for i, star in enumerate(self.stars):
-	    star_updates = self.star.update(other.stars[i], self.system_dict['name'])
-	    updates += star_updates
+        for i, star in enumerate(self.stars):
+            star_updates = self.star.update(other.stars[i], self.system_dict['name'])
+            updates += star_updates
 
-	return updates
+        return updates
 
 
     def update_system_values(other):
-	updates = []
+        updates = []
         if not self.name == other.name:
-	    updates.add([self.system_dict['name']])
+            updates.add([self.system_dict['name']])
 
-	if not self.right_ascension == other.right_ascension:
-	    updates.add([self.system_dict['name'], 'rightascension'])
+        if not self.right_ascension == other.right_ascension:
+            updates.add([self.system_dict['name'], 'rightascension'])
 
-	if not self.declination == other.declination:
-	    updates.add[elf.system_dict['name'], 'declination']
+        if not self.declination == other.declination:
+            updates.add[elf.system_dict['name'], 'declination']
 
-	if not self.distance_error_minus == other.distance_error_minus:
-	    updates.add([self.system_dict['name'], 'distance', '@errorminus'])
+        if not self.distance_error_minus == other.distance_error_minus:
+            updates.add([self.system_dict['name'], 'distance', '@errorminus'])
 
-	if not self.distance_error_plus == other.distance_error_plus:
-	    updates.add([self.system_dict['name'], 'distance', '@errorplus'])
+        if not self.distance_error_plus == other.distance_error_plus:
+            updates.add([self.system_dict['name'], 'distance', '@errorplus'])
