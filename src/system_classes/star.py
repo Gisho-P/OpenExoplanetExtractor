@@ -8,6 +8,7 @@ class Star():
 
         self.initialize_star_dict_values()
 
+        # case if there are multiple planets
         if isinstance(self.star_dict['planet'], list):
             self.planets = []
             for planet in self.star_dict['planet']:
