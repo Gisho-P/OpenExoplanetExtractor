@@ -9,8 +9,8 @@ class System():
     Requires the dictionary representation of a System
     '''
     def __init__(self, system_dict):
-	
-	self.system_dict = system_dict
+
+        self.system_dict = system_dict
 
     	initialize_system_dict_values()
 
@@ -47,7 +47,7 @@ class System():
 
     def update_system_values(other):
 	updates = []
-	if not self.name == other.name:
+        if not self.name == other.name:
 	    updates.add([self.system_dict['name']])
 
 	if not self.right_ascension == other.right_ascension:
