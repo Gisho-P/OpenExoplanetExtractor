@@ -1,4 +1,4 @@
-import Planet
+from planet import *
 
 class Star():
 
@@ -6,15 +6,18 @@ class Star():
 
         self.star_dict = star_dict
 
-        initialize_star_dict_values()
+        self.initialize_star_dict_values()
 
-        self.planets = []
-        for planet in self.star_dict['planet']:
-            temp_planet = Planet(planet)
-            self.planets += temp_planet
+        # case if there are multiple planets
+        if isinstance(self.star_dict['planet'], list):
+            self.planets = []
+            for planet in self.star_dict['planet']:
+                temp_planet = Planet(planet)
+                self.planets.append(temp_planet)
+        else:
+            self.planets = Planet(self.star_dict['planet'])
 
-
-    def initialize_star_dict_values():
+    def initialize_star_dict_values(self):
         self.mag_R_error_minus = self.star_dict['magR']['@errorminus']
         self.mag_R_error_plus = self.star_dict['magR']['@errorplus']
         self.mag_R = self.star_dict['magR']
