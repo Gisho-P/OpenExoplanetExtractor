@@ -1,15 +1,18 @@
 import unittest
 import urllib
-import dicttoxml
-import xmltodict
 import sys
 sys.path.insert(0, '../system_classes')
-import system
+sys.path.insert(0, '..')
+from system import *
+import dicttoxml
+import xmltodict
 
 class TestContained(unittest.TestCase):
 
     def test_hold_data(self):
-        data = open('CoRoT-24.xml', 'r').read()
+        file = open('CoRoT-24.xml', 'r')
+        data = file.read()
+        file.close()
         system_dict = xmltodict.parse(data, dict_constructor=dict)
         system = System(system_dict)
         result = system.declination
