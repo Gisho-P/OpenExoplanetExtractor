@@ -88,7 +88,7 @@ def mapAttributes(data_dict):
                },
                'declination':''
             }
-            catalog["planet"] = []
+            catalog["star"]["planet"] = []
             systems.update({data_dict[planet_name]['star_name'] : catalog})
         
         planet = {  
@@ -138,7 +138,7 @@ def mapAttributes(data_dict):
                    '@upperlimit': data_dict[planet_name]['mass']
                 }
              }
-        systems[data_dict[planet_name]['star_name']]["planet"].append(planet)
+        systems[data_dict[planet_name]['star_name']]["star"]["planet"].append(planet)
     
     # After storing all the information from the planets into the systems adds all systems to a list to return
     for system_key in systems:
