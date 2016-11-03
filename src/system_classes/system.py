@@ -1,5 +1,5 @@
 import collections
-import star
+from star import *
 
 class System():
 
@@ -12,14 +12,18 @@ class System():
 
         self.system_dict = system_dict
 
-        initialize_system_dict_values()
+        self.initialize_system_dict_values()
 
-        self.stars = []
-        for star in self.system_dict['system']['star']:
-            temp_star = Star(star)
-            self.stars.append(temp_star)
+        # the case where there are multiple stars
+        if isinstance(self.system_dict['system']['star'], list):
+            self.stars = []
+            for star in self.system_dict['system']['star']:
+                temp_star = Star(star)
+                self.stars.append(temp_star)
+        else:
+            self.stars = Star(self.system_dict['system']['star'])
 
-    def initialize_system_dict_values():
+    def initialize_system_dict_values(self):
     	self.name = self.system_dict['system']['name']
     	self.right_ascension = self.system_dict['system']['rightascension']
     	self.declination = self.system_dict['system']['declination']

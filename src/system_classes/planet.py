@@ -5,16 +5,27 @@ class Planet():
 
         self.planet_dict = planet_dict
 
-        initialize_planet_dict_values()
+        self.initialize_planet_dict_values()
 
 
-    def initialize_planet_dict_values():
+    def initialize_planet_dict_values(self):
         self.name = self.planet_dict['name']
         self.planet_list = self.planet_dict['list']
 
         self.mass = self.planet_dict['mass']
-        self.mass_error_minus = self.planet_dict['mass']['@errorminus']
-        self.mass_error_plus = self.planet_dict['mass']['@errorplus']
+        # not ever planet has all the properties, hence the try/excepts
+        try:
+            self.mass_upper_limit = self.planet_dict['mass']['@upperlimit']
+        except Exception:
+            self.mass_upper_limit = ''
+        try:
+            self.mass_error_minus = self.planet_dict['mass']['@errorminus']
+        except Exception:
+            self.mass_error_minus = ''
+        try:
+            self.mass_error_plus = self.planet_dict['mass']['@errorplus']
+        except Exception:
+            self.mass_error_plus = ''
 
         self.radius = self.planet_dict['radius']
         self.radius_error_minus = self.planet_dict['radius']['@errorminus']
@@ -67,13 +78,9 @@ class Planet():
         if self.mass == self.planet_dict['mass']:
             updates.append([system_name, star_name, self.planet_dict['name'], 'mass'])
 
-        if self.mass_error_minus == self.planet_dict['mass']['@errorminus']:
+        if self.mass_error_minus == self.planet_dict['mass']['@upperlimit']:
             updates.append([system_name, star_name, self.planet_dict[
-                'name'], 'mass', '@errorminus'])
-
-        if self.mass_error_plus == self.planet_dict['mass']['@errorplus']:
-            updates.append([system_name, star_name, self.planet_dict[
-                'name'], 'mass', '@errorplus'])
+                'name'], 'mass', '@upperlimit'])
 
         if self.radius == self.planet_dict['radius']:
             updates.append([system_name, star_name, self.planet_dict['name'], 'radius'])
