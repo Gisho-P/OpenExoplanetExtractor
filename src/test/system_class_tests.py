@@ -10,8 +10,8 @@ class TestContained(unittest.TestCase):
 
     def test_hold_data(self):
         data = open('CoRoT-24.xml', 'r').read()
-        result = xmltodict.parse(data, dict_constructor=dict)
-        system = System(result)
+        system_dict = xmltodict.parse(data, dict_constructor=dict)
+        system = System(system_dict)
         result = system.declination
         expected = "-03 43 10"
         print(result)
