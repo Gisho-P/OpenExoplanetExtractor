@@ -39,16 +39,19 @@ class System():
     '''
     def update(self, other):
 
-        updates = update_system_values(other)
-
-        for i, star in enumerate(self.stars):
-            star_updates = self.star.update(other.stars[i], self.system_dict['name'])
-            updates += star_updates
-
+        updates = self.update_system_values(other)
+        if isinstance(self.system_dict['system']['star'], list):
+            for i, star in enumerate(self.stars):
+                star_updates = self.star.update(other.stars[i],
+		                                self.system_dict['name'])
+                updates.update(star_updates)
+        else:
+            updates.update(self.stars.update(other.stars,
+	                                     self.system_dict['name']))
         return updates
 
 
-    def update_system_values(other):
+    def update_system_values(self, other):
         updates = []
         if not self.name == other.name:
             updates.add([self.system_dict['name']])

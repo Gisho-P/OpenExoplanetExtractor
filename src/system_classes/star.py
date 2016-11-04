@@ -70,14 +70,14 @@ class Star():
     '''
     def update(self, other, system_name):
 
-        updates = update_star_values(other)
+        updates = self.update_star_values(other)
         
         for i, planet in enumerate(self.planets):
             updates.update(planet.update(planet[i]), system_name, self.star_dict['name'])
         
         return updates
 
-    def update_star_values(other):
+    def update_star_values(self, other):
         updates = []
         if not self.mag_R_error_minus == self.star_dict['magR']['@errorminus']:
             updates.append([system_name, self.star_dict['name'], 'magR', '@errorminus'])
