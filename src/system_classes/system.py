@@ -39,15 +39,19 @@ class System():
     '''
     def update(self, other):
 
-        updates = self.update_system_values(other)
+        updates = []
+        updates += self.update_system_values(other)
+
         if isinstance(self.system_dict['system']['star'], list):
             for i, star in enumerate(self.stars):
                 star_updates = self.star.update(other.stars[i],
-		                                self.system_dict['name'])
-                updates.update(star_updates)
+		                                self.system_dict[
+		                                    'system']['name'])
+                updates += star_updates
         else:
-            updates.update(self.stars.update(other.stars,
-	                                     self.system_dict['name']))
+            updates += self.stars.update(other.stars,
+	                                     self.system_dict[
+	                                         'system']['name'])
         return updates
 
 
@@ -67,3 +71,4 @@ class System():
 
         if not self.distance_error_plus == other.distance_error_plus:
             updates.add([self.system_dict['name'], 'distance', '@errorplus'])
+        return updates
