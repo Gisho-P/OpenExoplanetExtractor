@@ -24,12 +24,14 @@ class System():
             self.stars = Star(self.system_dict['system']['star'])
 
     def initialize_system_dict_values(self):
-    	self.name = self.system_dict['system']['name']
-    	self.right_ascension = self.system_dict['system']['rightascension']
-    	self.declination = self.system_dict['system']['declination']
-    	self.distance_error_minus = self.system_dict['system'][
+        self.name = self.system_dict['system']['name']
+        self.right_ascension = self.system_dict['system']['rightascension']
+        self.declination = self.system_dict['system']['declination']
+
+        self.distance = self.system_dict['system']['distance']['#text']
+        self.distance_error_minus = self.system_dict['system'][
 	    'distance']['@errorminus']
-    	self.distance_error_plus = self.system_dict['system'][
+        self.distance_error_plus = self.system_dict['system'][
 	    'distance']['@errorplus']
 
     '''(System, System) -> list(list(string))
@@ -64,11 +66,12 @@ class System():
             updates.add([self.system_dict['name'], 'rightascension'])
 
         if not self.declination == other.declination:
-            updates.add[elf.system_dict['name'], 'declination']
+            updates.add[self.system_dict['name'], 'declination']
 
+        if not self.distance == other.distance:
+            updates.add[self.system_dict['name'], 'distance']
         if not self.distance_error_minus == other.distance_error_minus:
             updates.add([self.system_dict['name'], 'distance', '@errorminus'])
-
         if not self.distance_error_plus == other.distance_error_plus:
             updates.add([self.system_dict['name'], 'distance', '@errorplus'])
         return updates

@@ -32,11 +32,17 @@ class TestContained(unittest.TestCase):
     def test_basic_update(self):
         system_A = System(self.system_dict)
         system_B = System(self.system_dict)
-        # system_B.stars.age = '12'
         result = system_A.update(system_B)
         expected = []
-        # expected = [['CoRoT-24', ['CoRoT-24',
-        #                          '2MASS 06474141-0343094'], 'age']]
+        self.assertEquals(result, expected)
+
+    def test_one_update(self):
+        system_A = System(self.system_dict)
+        system_B = System(self.system_dict)
+        system_B.stars.age = '12'
+        result = system_A.update(system_B)
+        expected = [['CoRoT-24', ['CoRoT-24',
+                                  '2MASS 06474141-0343094'], 'age']]
         self.assertEquals(result, expected)
 
 if __name__ == '__main__':
