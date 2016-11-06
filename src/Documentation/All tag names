@@ -1,47 +1,47 @@
-system
-name
-rightascension
-declination
-distance
-star
-mass
-radius
-magV
-magB
-magJ
-magH
-magK
-temperature
-metallicity
-spectraltype
-planet
-list
-period
-semimajoraxis
-eccentricity
-periastron
-periastrontime
-description
-discoverymethod
-lastupdate
-discoveryyear
-videolink
-magR
-magI
-meananomaly
-binary
-separation
-positionangle
-age
-inclination
-image
-imagedescription
-istransiting
-transittime
-ascendingnode
-longitude
-magU
-maximumrvtime
-impactparameter
-spinorbitalignment
-new
+system (GOOD)
+name (GOOD)
+rightascension (GOOD)
+declination (GOOD)
+distance (GOOD)
+star (GOOD)
+mass (GOOD)
+radius (GOOD)
+magV: see 11 Com.xml
+magB: see 11 Com.xml
+magJ: see 11 Com.xml
+magH (GOOD)
+magK (GOOD)
+temperature (GOOD)
+metallicity (GOOD)
+spectraltype (GOOD)
+planet (GOOD)
+list (GOOD)
+period (GOOD)
+semimajoraxis (GOOD)
+eccentricity (GOOD)
+periastron: see 11 Com.xml
+periastrontime: see 11 Com.xml
+description (GOOD)
+discoverymethod (GOOD)
+lastupdate (GOOD)
+discoveryyear (GOOD)
+videolink: see 11 Com.xml
+magR (GOOD)
+magI (GOOD)
+meananomaly: see 14 Her.xml
+binary: see 16 Cygni.xml
+separation: see 16 Cygni.xml
+positionangle: see 16 Cygni.xml
+age (GOOD)
+inclination (GOOD)
+image: see 1RXS1609.xml
+imagedescription: see 1RXS1609.xml
+istransiting (GOOD)
+transittime (GOOD)
+ascendingnode: see 51 Eri.xml
+longitude: see 55 Cancri.xml
+magU: see Alpha Centauri.xml
+maximumrvtime: see BD-11 4672.xml
+impactparameter: see EPIC 201295312.xml
+spinorbitalignment: see HAT-P-27.xml
+new: see Kepler-1000.xml
