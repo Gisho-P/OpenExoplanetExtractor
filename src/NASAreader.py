@@ -1,7 +1,7 @@
 import json
 import urllib.request
 
-def readNASAExoplanetArchive():
+def readNASA():
 
     url = "http://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json"
     data = urllib.request.urlopen(url).read().decode('utf-8')
@@ -21,5 +21,3 @@ def readNASAExoplanetArchive():
 
     final_catalog.update({"System" : catalog})
     return final_catalog
-
-print(readNASAExoplanetArchive())
