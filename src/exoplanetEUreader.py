@@ -19,69 +19,69 @@ def mapAttributes(data_dict):
     found_stars = set()
     final_catalog = []
     systems = {}
-    catalog = {}    
+    catalog = {}
     # For each unique star a system will be created
     # Then each planet will be added to the system of which star it corresponds to
     for planet_name in data_dict:
         if ((data_dict[planet_name]['star_name'] not in found_stars)):
             found_stars.add(data_dict[planet_name]['star_name'])
-            catalog = {   
+            catalog = {
                'name': data_dict[planet_name]['star_name'],
                'rightascension': data_dict[planet_name]['ra'],
-               'star':{  
-                  'temperature':{  
+               'star':{
+                  'temperature':{
                      '@errorplus': data_dict[planet_name]['star_teff_error_max'],
                      '@errorminus': data_dict[planet_name]['star_teff_error_min'],
                      '#text': data_dict[planet_name]['star_teff']
                   },
                   'age': data_dict[planet_name]['star_age'],
-                  'name':[  
+                  'name':[
                       data_dict[planet_name]['star_name'],
                       data_dict[planet_name]["star_alternate_names"]
                   ],
-                  'magK':{  
+                  'magK':{
                      '@errorplus':'',
                      '@errorminus':'',
                      '#text': data_dict[planet_name]['mag_k']
                   },
-                  'magI':{  
+                  'magI':{
                      '@errorplus':'',
                      '@errorminus':'',
                      '#text': data_dict[planet_name]['mag_i']
                   },
-                  'radius':{  
+                  'radius':{
                      '@errorplus': data_dict[planet_name]['star_radius_error_max'],
                      '@errorminus': data_dict[planet_name]['star_radius_error_min'],
                      '#text': data_dict[planet_name]['star_radius']
                   },
-                  'magR':{  
+                  'magR':{
                      '@errorplus':'',
                      '@errorminus':'',
                      '#text': ''
                   },
                   'spectraltype': data_dict[planet_name]['star_sp_type'],
-                  'mass':{  
+                  'mass':{
                      '@errorplus': data_dict[planet_name]['star_mass_error_max'],
                      '@errorminus': data_dict[planet_name]['star_mass_error_min'],
                      '#text': data_dict[planet_name]['star_mass']
                   },
-                  'metallicity':{  
+                  'metallicity':{
                      '@errorplus': data_dict[planet_name]['star_metallicity_error_max'],
                      '@errorminus': data_dict[planet_name]['star_metallicity_error_min'],
                      '#text': data_dict[planet_name]['star_metallicity']
                   },
-                  'magJ':{  
+                  'magJ':{
                      '@errorplus':'',
                      '@errorminus':'',
                      '#text': data_dict[planet_name]['mag_j']
                   },
-                  'magH':{  
+                  'magH':{
                      '@errorplus':'',
                      '@errorminus':'',
                      '#text': data_dict[planet_name]['mag_h']
                   }
                },
-               'distance':{  
+               'distance':{
                   '@errorplus': data_dict[planet_name]['star_distance_error_max'],
                   '@errorminus': data_dict[planet_name]['star_distance_error_min'],
                   '#text': data_dict[planet_name]['star_distance']
@@ -90,36 +90,36 @@ def mapAttributes(data_dict):
             }
             catalog["star"]["planet"] = []
             systems.update({data_dict[planet_name]['star_name'] : catalog})
-        
-        planet = {  
-                'transittime':{  
+
+        planet = {
+                'transittime':{
                    '@errorplus': data_dict[planet_name]['tzero_tr_error_max'],
                    '#text': data_dict[planet_name]['tzero_tr'],
                    '@errorminus': data_dict[planet_name]['tzero_tr_error_min'],
                    '@unit':''
                 },
                 'lastupdate': data_dict[planet_name]['updated'],
-                'temperature':{  
+                'temperature':{
                    '@errorplus': '',
                    '@errorminus': '',
                    '#text': data_dict[planet_name]['temp_calculated']
                 },
                 'discoveryyear': data_dict[planet_name]['discovered'],
-                'period':{  
+                'period':{
                    '@errorplus': data_dict[planet_name]['orbital_period_error_max'],
                    '@errorminus': data_dict[planet_name]['orbital_period_error_min'],
                    '#text': data_dict[planet_name]['orbital_period']
                 },
-                'name':[  
+                'name':[
                     planet_name,
                    ''
                 ],
-                'semimajoraxis':{  
+                'semimajoraxis':{
                    '@errorplus': data_dict[planet_name]['semi_major_axis_error_max'],
                    '@errorminus': data_dict[planet_name]['semi_major_axis_error_min'],
                    '#text': data_dict[planet_name]['semi_major_axis']
                 },
-                'radius':{  
+                'radius':{
                    '@errorplus': data_dict[planet_name]['radius_error_max'],
                    '@errorminus': data_dict[planet_name]['radius_error_min'],
                    '#text': data_dict[planet_name]['radius']
@@ -128,21 +128,19 @@ def mapAttributes(data_dict):
                 'istransiting':'',
                 'discoverymethod':'',
                 'description':'',
-                'inclination':{  
+                'inclination':{
                    '@errorplus': data_dict[planet_name]['inclination_error_max'],
                    '@errorminus': data_dict[planet_name]['inclination_error_min'],
                    '#text': data_dict[planet_name]['inclination']
                 },
                 'list':'',
-                'mass':{  
+                'mass':{
                    '@upperlimit': data_dict[planet_name]['mass']
                 }
              }
         systems[data_dict[planet_name]['star_name']]["star"]["planet"].append(planet)
-    
+
     # After storing all the information from the planets into the systems adds all systems to a list to return
     for system_key in systems:
         final_catalog.append({"system" : systems[system_key]})
     return final_catalog
-
-readExoplaneteu()

@@ -29,23 +29,23 @@ def searchForNew(system_name):
         if(name[:len(name) -4] == system_name):
             # Return the path of the file
             path = "./systems/" + system_name + ".xml"
-            
+
     return(path)
-        
-        
-    
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #print(readOEC())
 #print(dicttoXML(readCatalogue()))
 #print(csvToDictToXML())
-print(searchForNew('11 Com'))
+#print(searchForNew('11 Com'))
