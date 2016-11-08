@@ -1,0 +1,107 @@
+CSCC01 Deliverable 2 Marking Guide
+-----------------------------------
+
+Please cite sources for stock photos!
+
+Personas:  17 / 20
+
+  -1 most family/personal information is not relevant
+  Format: 3 / 4
+
+      must contain: gender, age, personality, skills, environment,
+      attitude towards technology in general, attitude towards
+      computer software  
+      Too many irrelevant details are not useful!
+
+  -2 for not mentioning proficiency with version control
+  Information content:  6 / 8
+   
+      The purpose of each persona is clear. Personas suggest different
+      system requirements.
+        
+      Goals when using the system
+
+
+  Coverage: 8 / 8
+
+      personas must include at least two of the following type of users:
+
+      -- "Hanno type"
+
+      -- Hanno's grad student: can approve modifications to the data,
+           but cannot add other such users (only Hanno can)
+
+      -- A less tech-savvy astronomer: Sure, Hanno is the client who
+           makes the order, but the software will be released as
+           open-source, so other types of users are 100% realistic.
+
+
+Product Backlog:  36 / 50
+
+    10 / 10 : User stories follow the format
+                "As __name__ (__role__), I want __something__."
+		("so that __benefit__" is optional)
+	       AND each __name__ corresponds to one of the personas.
+    
+    User stories don't specify how Alice will use the application
+    -5
+    5 / 10 : User stories, together, reflect all the user
+    	        requirements (from all prospective users).
+
+    10 / 10 : User stories correspond to actual requirements (no
+    	        "invented" features).
+
+
+    almost all user stories are vague and its difficult to estimate time -5
+    5 / 10 : User stories contain enough information for devs to
+                estimate how long it would take to implement it.
+    
+    User story one is encompasses too much for each persona.
+    Many user stories need to be more specific.  See feeback.
+    6 / 10 : Each user story addresses one specific requirement (no
+                "world peace" stories).
+
+
+Presentation:  18 / 20
+
+  4 / 4 : well-presented, is easy to read and to navigate
+
+  4 / 4 : spelling and grammar
+  
+  10 / 10 : looks professional
+
+  README is not present. -2
+  0 / 2 : quality of the README file
+
+
+Interview: ___ / 10
+
+-------------------------------------------------------------------------------
+Marking format:
+
+Please, produce a text or pdf file for each team. This file should
+contain the above rubric. 
+
+Please, provide comments to the teams. I require a comment for each
+rubric where you are deducting any marks. But perhaps more
+importantly, I would like you to provide enough help to make sure
+every team can make good progress on the next stage of the project.
+
+How you should provide comments? I will leave the format to you, since
+I know how personal the choice of editor, etc., can be, and I don't
+want to slow you down.
+
+Some options in case you are not sure what to choose:
+ -- annotate a pdf submission with your comments
+ -- add the comments to the file with the rubric
+ -- create a separate file for the comments
+ -- ... 
+
+I ask that you are consistent: use the same format for each team.
+
+As always, please let me know if you have any questions, concerns,
+suggestions, etc.!
+
+
+Cheers,
+A.
