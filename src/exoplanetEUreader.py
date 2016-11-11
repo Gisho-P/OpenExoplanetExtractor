@@ -15,6 +15,10 @@ def readExoplaneteu():
         data_dict[key] = row
     return mapAttributes(data_dict)
 
+def add_to_catalog(catalog, attr_name, attr): #not implemented yet
+    if(attr != ""):
+        catalog[attr_name] = attr
+
 def mapAttributes(data_dict):
     found_stars = set()
     final_catalog = []
@@ -40,24 +44,15 @@ def mapAttributes(data_dict):
                       data_dict[planet_name]["star_alternate_names"]
                   ],
                   'magK':{
-                     '@errorplus':'',
-                     '@errorminus':'',
                      '#text': data_dict[planet_name]['mag_k']
                   },
                   'magI':{
-                     '@errorplus':'',
-                     '@errorminus':'',
                      '#text': data_dict[planet_name]['mag_i']
                   },
                   'radius':{
                      '@errorplus': data_dict[planet_name]['star_radius_error_max'],
                      '@errorminus': data_dict[planet_name]['star_radius_error_min'],
                      '#text': data_dict[planet_name]['star_radius']
-                  },
-                  'magR':{
-                     '@errorplus':'',
-                     '@errorminus':'',
-                     '#text': ''
                   },
                   'spectraltype': data_dict[planet_name]['star_sp_type'],
                   'mass':{
@@ -71,13 +66,9 @@ def mapAttributes(data_dict):
                      '#text': data_dict[planet_name]['star_metallicity']
                   },
                   'magJ':{
-                     '@errorplus':'',
-                     '@errorminus':'',
                      '#text': data_dict[planet_name]['mag_j']
                   },
                   'magH':{
-                     '@errorplus':'',
-                     '@errorminus':'',
                      '#text': data_dict[planet_name]['mag_h']
                   }
                },
@@ -85,8 +76,7 @@ def mapAttributes(data_dict):
                   '@errorplus': data_dict[planet_name]['star_distance_error_max'],
                   '@errorminus': data_dict[planet_name]['star_distance_error_min'],
                   '#text': data_dict[planet_name]['star_distance']
-               },
-               'declination':''
+               }
             }
             catalog["star"]["planet"] = []
             systems.update({data_dict[planet_name]['star_name'] : catalog})
@@ -100,8 +90,6 @@ def mapAttributes(data_dict):
                 },
                 'lastupdate': data_dict[planet_name]['updated'],
                 'temperature':{
-                   '@errorplus': '',
-                   '@errorminus': '',
                    '#text': data_dict[planet_name]['temp_calculated']
                 },
                 'discoveryyear': data_dict[planet_name]['discovered'],
@@ -110,10 +98,9 @@ def mapAttributes(data_dict):
                    '@errorminus': data_dict[planet_name]['orbital_period_error_min'],
                    '#text': data_dict[planet_name]['orbital_period']
                 },
-                'name':[
-                    planet_name,
-                   ''
-                ],
+                'name':
+                    planet_name
+                ,
                 'semimajoraxis':{
                    '@errorplus': data_dict[planet_name]['semi_major_axis_error_max'],
                    '@errorminus': data_dict[planet_name]['semi_major_axis_error_min'],
@@ -125,15 +112,11 @@ def mapAttributes(data_dict):
                    '#text': data_dict[planet_name]['radius']
                 },
                 'eccentricity': data_dict[planet_name]['eccentricity'],
-                'istransiting':'',
-                'discoverymethod':'',
-                'description':'',
                 'inclination':{
                    '@errorplus': data_dict[planet_name]['inclination_error_max'],
                    '@errorminus': data_dict[planet_name]['inclination_error_min'],
                    '#text': data_dict[planet_name]['inclination']
                 },
-                'list':'',
                 'mass':{
                    '@upperlimit': data_dict[planet_name]['mass']
                 }
@@ -144,3 +127,4 @@ def mapAttributes(data_dict):
     for system_key in systems:
         final_catalog.append({"system" : systems[system_key]})
     return final_catalog
+        
