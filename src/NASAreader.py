@@ -45,7 +45,7 @@ def mapAttributes(data_dict):
                     },
                     'age': '',
                     'name':[
-                        data_dict[planet_name]['pl_hostname'],
+                        data_dict[planet_name]['pl_hostname']
                     ],
                     'magK':{
                         '@errorplus':'',
@@ -55,7 +55,7 @@ def mapAttributes(data_dict):
                     'magI':{
                         '@errorplus':'',
                         '@errorminus':'',
-                        '#text': ' '
+                        '#text': ''
                     },
                     'radius':{
                         '@errorplus': data_dict[planet_name]['st_raderr1'],
@@ -152,7 +152,8 @@ def mapAttributes(data_dict):
             }
             
             systems[data_dict[planet_name]['pl_hostname']]["star"]["planet"].append(planet)
-            # Add all system to a list for duplicates
-            for system_key in systems:
-                final_catalog.append({"system" : systems[system_key]})
-            return final_catalog
+            
+    # Add all system to a list for duplicates
+    for system_key in systems:
+        final_catalog.append({"system" : systems[system_key]})
+    return final_catalog
