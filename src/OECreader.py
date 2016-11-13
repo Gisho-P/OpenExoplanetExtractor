@@ -18,8 +18,6 @@ def writeSystem(system_obj):
     file.truncate()
     file.write(system_xml + "\n")
     file.close()
-    result = dicttoxml.dicttoxml(data, root=False, attr_type=False)
-    return result
 
 
 def readSystem(system_name):
