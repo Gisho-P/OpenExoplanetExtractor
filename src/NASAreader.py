@@ -36,7 +36,7 @@ def mapAttributes(data_dict):
             found_stars.add(data_dict[planet_name]['pl_hostname'])
             catalog = {
                 'name': data_dict[planet_name]['pl_hostname'],
-                'rightascension': data_dict[planet_name]['ra_str'],
+                'rightascension': data_dict[planet_name]['ra'],
                 'star':{
                     'temperature':{
                         '@errorplus': data_dict[planet_name]['st_tefferr1'],
@@ -95,7 +95,7 @@ def mapAttributes(data_dict):
                     '@errorminus': data_dict[planet_name]['st_disterr2'],
                     '#text': data_dict[planet_name]['st_dist']
                     },
-                'declination':''
+                'declination':data_dict[planet_name]['dec']
             }
             
             catalog["star"]["planet"] = []
@@ -103,26 +103,25 @@ def mapAttributes(data_dict):
             
             planet = {
                 'transittime':{
-                    '@errorplus': '',
-                    '#text': '',
-                    '@errorminus': '',
-                    '@unit':''
+                    '@errorplus': data_dict[planet_name]['pl_trandurerr1'],
+                    '#text': data_dict[planet_name]['pl_trandur'],
+                    '@errorminus': data_dict[planet_name]['pl_trandurerr2'],
+                    '@unit':'days'
                     },
                 'lastupdate': data_dict[planet_name]['rowupdate'],
                 'temperature':{
-                    '@errorplus': '',
-                    '@errorminus': '',
-                    '#text': ' '
+                    '@errorplus': data_dict[planet_name]['pl_eqterr1'],
+                    '@errorminus': data_dict[planet_name]['pl_eqterr2'],
+                    '#text': data_dict[planet_name]['pl_eqt']
                     },
-                'discoveryyear': '',
+                'discoveryyear': data_dict[planet_name]['pl_disc'],
                 'period':{
                     '@errorplus': data_dict[planet_name]['pl_orbpererr1'],
                     '@errorminus': data_dict[planet_name]['pl_orbpererr2'],
                     '#text': data_dict[planet_name]['pl_orbper']
                     },
                 'name':[
-                    planet_name,
-                    ''
+                    planet_name
                     ],
                 'semimajoraxis':{
                     '@errorplus': data_dict[planet_name]['pl_orbsmaxerr1'],
