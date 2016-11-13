@@ -6,12 +6,12 @@ sys.path.insert(0, '..')
 from system import *
 import dicttoxml
 import xmltodict
-import NASAReader
+import NASAreader
 
 class TestNASAReader(unittest.TestCase):
     
     def setUp(self):
-        self.systems = NASAReader.readNASAExoplanetArchive()
+        self.systems = NASAreader.readNASAExoplanetArchive()
     
     # Checks that there is only one system for a star that has multiple planets
     def test_Single_System(self):
