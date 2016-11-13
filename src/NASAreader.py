@@ -31,7 +31,7 @@ def mapAttributes(data_dict):
     # Organize by system 
     # Add to system if planet orbits the star 
     for planet_name in data_dict:
-        # pl_hostname is interchangable with the systen/star name
+        # pl_hostname is interchangable with the system/star name
         if ((data_dict[planet_name]['pl_hostname'] not in found_stars)):
             found_stars.add(data_dict[planet_name]['pl_hostname'])
             catalog = {
@@ -43,9 +43,7 @@ def mapAttributes(data_dict):
                         '@errorminus': data_dict[planet_name]['st_tefferr2'],
                         '#text': data_dict[planet_name]['st_teff']
                     },
-                    'name':[
-                        data_dict[planet_name]['pl_hostname']
-                    ],
+                    'name': data_dict[planet_name]['pl_hostname'],
                     'radius':{
                         '@errorplus': data_dict[planet_name]['st_raderr1'],
                         '@errorminus': data_dict[planet_name]['st_raderr2'],
@@ -69,34 +67,34 @@ def mapAttributes(data_dict):
             catalog["star"]["planet"] = []
             systems.update({data_dict[planet_name]['pl_hostname'] : catalog})
             
-            planet = {
-                'lastupdate': data_dict[planet_name]['rowupdate'],
-                'period':{
-                    '@errorplus': data_dict[planet_name]['pl_orbpererr1'],
-                    '@errorminus': data_dict[planet_name]['pl_orbpererr2'],
-                    '#text': data_dict[planet_name]['pl_orbper']
-                    },
-                'name': planet_name,
-                'semimajoraxis':{
-                    '@errorplus': data_dict[planet_name]['pl_orbsmaxerr1'],
-                    '@errorminus': data_dict[planet_name]['pl_orbsmaxerr2'],
-                    '#text': data_dict[planet_name]['pl_orbsmax']
-                    },
-                'radius':{
-                    '@errorplus': data_dict[planet_name]['st_raderr1'],
-                    '@errorminus': data_dict[planet_name]['st_raderr2'],
-                    '#text': data_dict[planet_name]['st_rad']
-                    },
-                'eccentricity': data_dict[planet_name]['pl_orbeccen'],
-                'discoverymethod':data_dict[planet_name]['pl_discmethod'],
-                'inclination':{
-                    '@errorplus': data_dict[planet_name]['pl_orbinclerr1'],
-                    '@errorminus': data_dict[planet_name]['pl_orbinclerr2'],
-                    '#text': data_dict[planet_name]['pl_orbincl']
-                    }
+        planet = {
+            'lastupdate': data_dict[planet_name]['rowupdate'],
+            'period':{
+                '@errorplus': data_dict[planet_name]['pl_orbpererr1'],
+                '@errorminus': data_dict[planet_name]['pl_orbpererr2'],
+                '#text': data_dict[planet_name]['pl_orbper']
+                },
+            'name': planet_name,
+            'semimajoraxis':{
+                '@errorplus': data_dict[planet_name]['pl_orbsmaxerr1'],
+                '@errorminus': data_dict[planet_name]['pl_orbsmaxerr2'],
+                '#text': data_dict[planet_name]['pl_orbsmax']
+                },
+            'radius':{
+                '@errorplus': data_dict[planet_name]['st_raderr1'],
+                '@errorminus': data_dict[planet_name]['st_raderr2'],
+                '#text': data_dict[planet_name]['st_rad']
+                },
+            'eccentricity': data_dict[planet_name]['pl_orbeccen'],
+            'discoverymethod':data_dict[planet_name]['pl_discmethod'],
+            'inclination':{
+                '@errorplus': data_dict[planet_name]['pl_orbinclerr1'],
+                '@errorminus': data_dict[planet_name]['pl_orbinclerr2'],
+                '#text': data_dict[planet_name]['pl_orbincl']
             }
+        }
             
-            systems[data_dict[planet_name]['pl_hostname']]["star"]["planet"].append(planet)
+        systems[data_dict[planet_name]['pl_hostname']]["star"]["planet"].append(planet)            
             
     # Add all system to a list for duplicates
     for system_key in systems:
