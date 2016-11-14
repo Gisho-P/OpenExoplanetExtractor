@@ -24,4 +24,10 @@ Deliverable 4:
 
 Code Inspection Video: https://drive.google.com/file/d/0By3csrjziWd6V1U3UFp3NFZJVEE/view
 
+Evidence for requesting a validation:  ./Documentation/RequestValidation.jpg
+Evidence that client has validated:    ./Documentation/ClientValidation.jpg
 
+How to run:
+1) Install all the .py files in one directory or clone it in a directory
+2) Put all the systems class given from hanno(the .xml file) into a directory called systems
+3) Then start running the code 
