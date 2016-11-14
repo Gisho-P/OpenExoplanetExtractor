@@ -24,5 +24,4 @@ Deliverable 4:
 
 Code Inspection Video: https://drive.google.com/file/d/0By3csrjziWd6V1U3UFp3NFZJVEE/view
 
-D4.pdf is at ./Documentation/D4.pdf
 
