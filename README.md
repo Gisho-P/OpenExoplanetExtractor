@@ -24,9 +24,9 @@ Deliverable 4:
 
 Code Inspection Video: https://drive.google.com/file/d/0By3csrjziWd6V1U3UFp3NFZJVEE/view
 
-Evidence for requesting a validation:  ./Documentation/ValidationRequest.jpg
+Evidence for requesting a validation:  ./ValidationRequest.jpg
 
-Evidence that client has validated:    ./Documentation/ClientValidation.jpg
+Evidence that client has validated:    ./ClientValidation.jpg
 
 How to run:
 
