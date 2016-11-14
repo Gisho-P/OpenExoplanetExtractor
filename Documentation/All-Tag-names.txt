@@ -6,9 +6,9 @@ distance (GOOD)
 star (GOOD)
 mass (GOOD)
 radius (GOOD)
-magV: see 11 Com.xml
-magB: see 11 Com.xml
-magJ: see 11 Com.xml
+magV: see 11 Com.xml (FOUND EU)
+magB: see 11 Com.xml (N/A EU)
+magJ: see 11 Com.xml (FOUND EU)
 magH (GOOD)
 magK (GOOD)
 temperature (GOOD)
@@ -19,29 +19,28 @@ list (GOOD)
 period (GOOD)
 semimajoraxis (GOOD)
 eccentricity (GOOD)
-periastron: see 11 Com.xml
-periastrontime: see 11 Com.xml
+periastron: see 11 Com.xml (FOUND EU)
+periastrontime: see 11 Com.xml (FOUND EU)
 description (GOOD)
 discoverymethod (GOOD)
 lastupdate (GOOD)
 discoveryyear (GOOD)
-videolink: see 11 Com.xml
+videolink: see 11 Com.xml (N/A EU)
 magR (GOOD)
 magI (GOOD)
-meananomaly: see 14 Her.xml
-binary: see 16 Cygni.xml
-separation: see 16 Cygni.xml
-positionangle: see 16 Cygni.xml
+meananomaly: see 14 Her.xml (N/A EU)
+binary: see 16 Cygni.xml (N/A EU)
+separation: see 16 Cygni.xml (N/A EU)
+positionangle: see 16 Cygni.xml (N/A EU)
 age (GOOD)
 inclination (GOOD)
-image: see 1RXS1609.xml
-imagedescription: see 1RXS1609.xml
+image: see 1RXS1609.xml  (N/A EU)
+imagedescription: see 1RXS1609.xml  (N/A EU)
 istransiting (GOOD)
 transittime (GOOD)
-ascendingnode: see 51 Eri.xml
-longitude: see 55 Cancri.xml
-magU: see Alpha Centauri.xml
-maximumrvtime: see BD-11 4672.xml
-impactparameter: see EPIC 201295312.xml
-spinorbitalignment: see HAT-P-27.xml
-new: see Kepler-1000.xml
+ascendingnode: see 51 Eri.xml (N/A EU)
+longitude: see 55 Cancri.xml (N/A EU)
+magU: see Alpha Centauri.xml  (N/A EU)
+maximumrvtime: see BD-11 4672.xml (FOUND EU, may be the same as periastrontime)
+impactparameter: see EPIC 201295312.xml (FOUND EU)
+spinorbitalignment: see HAT-P-27.xml (N/A EU)
