@@ -31,7 +31,7 @@ def mapAttributes(data_dict):
     # Organize by system 
     # Add to system if planet orbits the star 
     for planet_name in data_dict:
-        # pl_hostname is interchangable with the systen/star name
+        # pl_hostname is interchangable with the system/star name
         if ((data_dict[planet_name]['pl_hostname'] not in found_stars)):
             found_stars.add(data_dict[planet_name]['pl_hostname'])
             catalog = {
@@ -43,50 +43,16 @@ def mapAttributes(data_dict):
                         '@errorminus': data_dict[planet_name]['st_tefferr2'],
                         '#text': data_dict[planet_name]['st_teff']
                     },
-                    'age': '',
-                    'name':[
-                        data_dict[planet_name]['pl_hostname']
-                    ],
-                    'magK':{
-                        '@errorplus':'',
-                        '@errorminus':'',
-                        '#text': ' '
-                    },
-                    'magI':{
-                        '@errorplus':'',
-                        '@errorminus':'',
-                        '#text': ''
-                    },
+                    'name': data_dict[planet_name]['pl_hostname'],
                     'radius':{
                         '@errorplus': data_dict[planet_name]['st_raderr1'],
                         '@errorminus': data_dict[planet_name]['st_raderr2'],
                         '#text': data_dict[planet_name]['st_rad']
                     },
-                    'magR':{
-                        '@errorplus':'',
-                        '@errorminus':'',
-                        '#text': ''
-                    },
-                    'spectraltype': '',
                     'mass':{
                         '@errorplus': data_dict[planet_name]['st_masserr1'],
                         '@errorminus': data_dict[planet_name]['st_masserr2'],
                         '#text': data_dict[planet_name]['st_mass']
-                    },
-                    'metallicity':{
-                        '@errorplus': '',
-                        '@errorminus': '',
-                        '#text': ''
-                    },
-                    'magJ':{
-                        '@errorplus':'',
-                        '@errorminus':'',
-                        '#text': ''
-                    },
-                    'magH':{
-                        '@errorplus':'',
-                        '@errorminus':'',
-                        '#text': ''
                     }
                 },
                 
@@ -101,56 +67,34 @@ def mapAttributes(data_dict):
             catalog["star"]["planet"] = []
             systems.update({data_dict[planet_name]['pl_hostname'] : catalog})
             
-            planet = {
-                'transittime':{
-                    '@errorplus': data_dict[planet_name]['pl_trandurerr1'],
-                    '#text': data_dict[planet_name]['pl_trandur'],
-                    '@errorminus': data_dict[planet_name]['pl_trandurerr2'],
-                    '@unit':'days'
-                    },
-                'lastupdate': data_dict[planet_name]['rowupdate'],
-                'temperature':{
-                    '@errorplus': data_dict[planet_name]['pl_eqterr1'],
-                    '@errorminus': data_dict[planet_name]['pl_eqterr2'],
-                    '#text': data_dict[planet_name]['pl_eqt']
-                    },
-                'discoveryyear': data_dict[planet_name]['pl_disc'],
-                'period':{
-                    '@errorplus': data_dict[planet_name]['pl_orbpererr1'],
-                    '@errorminus': data_dict[planet_name]['pl_orbpererr2'],
-                    '#text': data_dict[planet_name]['pl_orbper']
-                    },
-                'name':[
-                    planet_name
-                    ],
-                'semimajoraxis':{
-                    '@errorplus': data_dict[planet_name]['pl_orbsmaxerr1'],
-                    '@errorminus': data_dict[planet_name]['pl_orbsmaxerr2'],
-                    '#text': data_dict[planet_name]['pl_orbsmax']
-                    },
-                'radius':{
-                    '@errorplus': data_dict[planet_name]['st_raderr1'],
-                    '@errorminus': data_dict[planet_name]['st_raderr2'],
-                    '#text': data_dict[planet_name]['st_rad']
-                    },
-                'eccentricity': data_dict[planet_name]['pl_orbeccen'],
-                'istransiting':'',
-                'discoverymethod':data_dict[planet_name]['pl_discmethod'],
-                'description':'',
-                'inclination':{
-                    '@errorplus': data_dict[planet_name]['pl_orbinclerr1'],
-                    '@errorminus': data_dict[planet_name]['pl_orbinclerr2'],
-                    '#text': data_dict[planet_name]['pl_orbincl']
-                    },
-                'list':'',
-                'mass':{
-                    '@errorplus': data_dict[planet_name]['pl_bmassjerr1'],
-                    '@errorminus': data_dict[planet_name]['pl_bmassjerr2'],
-                    '#text': data_dict[planet_name]['pl_bmassj']
-                }
+        planet = {
+            'lastupdate': data_dict[planet_name]['rowupdate'],
+            'period':{
+                '@errorplus': data_dict[planet_name]['pl_orbpererr1'],
+                '@errorminus': data_dict[planet_name]['pl_orbpererr2'],
+                '#text': data_dict[planet_name]['pl_orbper']
+                },
+            'name': planet_name,
+            'semimajoraxis':{
+                '@errorplus': data_dict[planet_name]['pl_orbsmaxerr1'],
+                '@errorminus': data_dict[planet_name]['pl_orbsmaxerr2'],
+                '#text': data_dict[planet_name]['pl_orbsmax']
+                },
+            'radius':{
+                '@errorplus': data_dict[planet_name]['st_raderr1'],
+                '@errorminus': data_dict[planet_name]['st_raderr2'],
+                '#text': data_dict[planet_name]['st_rad']
+                },
+            'eccentricity': data_dict[planet_name]['pl_orbeccen'],
+            'discoverymethod':data_dict[planet_name]['pl_discmethod'],
+            'inclination':{
+                '@errorplus': data_dict[planet_name]['pl_orbinclerr1'],
+                '@errorminus': data_dict[planet_name]['pl_orbinclerr2'],
+                '#text': data_dict[planet_name]['pl_orbincl']
             }
+        }
             
-            systems[data_dict[planet_name]['pl_hostname']]["star"]["planet"].append(planet)
+        systems[data_dict[planet_name]['pl_hostname']]["star"]["planet"].append(planet)            
             
     # Add all system to a list for duplicates
     for system_key in systems:
