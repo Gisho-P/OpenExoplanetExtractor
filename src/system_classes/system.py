@@ -36,9 +36,10 @@ class System():
             else:
                 if isinstance(self.system_dict['system']['star'], list):
                     for i, star in enumerate(self.stars):
-                        star_updates = self.star.update(other.stars[i],
-                                                        self.system_dict[
-                                                            'system']['name'])
+                        star_A = Star(self.system_dict['system']['star'])
+                        star_B = Star(other.system_dict['system']['star'])
+                        star_updates = star_A.update(star_B, self.system_dict[
+                                                         'system']['name'])
                         updates += star_updates
                 else:
                     star_A = Star(self.system_dict['system']['star'])
