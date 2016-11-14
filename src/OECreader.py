@@ -8,22 +8,31 @@ import sys
 sys.path.insert(0, './system_classes')
 from system import *
 
-def readOEC():
-    url = "https://raw.githubusercontent.com/OpenExoplanetCatalogue/open_exoplanet_catalogue/master/systems/Kepler-489.xml"
-    data = urllib.request.urlopen(url).read().decode('utf-8')
-    result = xmltodict.parse(data, dict_constructor=dict)
-    return result
+
+def writeSystem(system_obj):
+    ''' Write a system object representation of a system to a xml file in the
+    local copy of the oec'''
+    system_xml = dicttoxml.dicttoxml(system_obj.toDict(), root=False, attr_type=False)
+    path = findSystem(system_obj.mainName)
+    file = open(path,"w")
+    file.truncate()
+    file.write(system_xml + "\n")
+    file.close()
 
 
-def dicttoXML(data):
-    result = dicttoxml.dicttoxml(data, root=False, attr_type=False)
-    return result
+def readSystem(system_name):
+    ''' Read system xml of oec local copy'''
+    path = findSystem(system_name)
+    file = open(path,"r")
+    data = file.read()
+    # Temporary fix, ****CHECK LATER*****
+    data = data[3:]
+    sys_dict = xmltodict.parse(data, dict_constructor=dict)
+    system = System(sys_dict)
+    return(system)
 
-def csvToDictToXML():
-    result = dicttoxml.dicttoxml(exoplanetEUreader.readExoplaneteu()[0], root=False, attr_type=False)
-    return result
-
-def searchForSys(system_name):
+def findSystem(system_name):
+    ''' Read system xml of oec local copy'''
     # Search the directory for the name
     fileList = os.listdir('./systems')
     # Loop through and get rid of all the file extensions
@@ -33,16 +42,7 @@ def searchForSys(system_name):
             # Return the path of the file
             path = "./systems/" + system_name + ".xml"
     # Take the path and read the data in the path
-    file = open(path,"r")
-    data = file.read()
-    # Temporary fix, ****CHECK LATER*****
-    data = data[3:]
-    sys_dict = xmltodict.parse(data, dict_constructor=dict)
-    system = System(sys_dict)
-    return(system)
-
-
-
+    return path
 
 
 
@@ -57,4 +57,4 @@ def searchForSys(system_name):
 #print(readOEC())
 #print(dicttoXML(readCatalogue()))
 #print(csvToDictToXML())
-searchForSys('11 Com')
+#searchForSys('11 Com')
