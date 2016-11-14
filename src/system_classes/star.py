@@ -1,4 +1,7 @@
 from planet import *
+import sys
+sys.path.insert(0, '..')
+from Conflict import *
 
 class Star():
 
@@ -13,11 +16,13 @@ class Star():
     '''
     def update(self, other, system_name):
         updates = []
-        for prop, value in star_dict.items():
+        for prop, value in self.star_dict.items():
             if prop != 'planet':
                 if self.star_dict[prop] != other.star_dict[prop]:
-                    self.star_dict[prop] = Conflict.resolve(system_name + "/" + str(self.star_dict[
-                        'name']), prop, self.star_dict[prop], other.star_dict[prop])
+                    self.star_dict[prop] = Conflict.resolve(
+                        system_name + "/" + str(self.star_dict[
+                            'name']), prop, self.star_dict[
+                                prop], other.star_dict[prop])
                     updates.append([system_name, other.star_dict['name'], prop])
             # dealing with planets
             else:
@@ -25,13 +30,14 @@ class Star():
                     for i, planet in enumerate(self.star_dict['planet']):
                         planet_A = Planet(planet)
                         planet_B = Planet(other.star_dict['planet'][i])
-                        planet_updates = planet_A.update(planet_B, system_name,
-                                                         other.star_dict['name'])
+                        planet_updates = planet_A.update(
+                            planet_B, system_name, other.star_dict['name'])
                         updates += planet_updates
                 else:
                     planet_A = Planet(self.system_dict['system']['star'])
                     planet_B = Planet(other.system_dict['system']['star'])
-                    updates += planet_A.update(planet_B, system_name,
-                                                         other.star_dict['name'])
+                    updates += planet_A.update(planet_B,
+                                               system_name, other.star_dict[
+                                                   'name'])
         
         return updates

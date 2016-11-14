@@ -2,7 +2,7 @@ import collections
 from star import *
 import sys
 sys.path.insert(0, '..')
-import Conflict
+from Conflict import *
 
 class System():
 
@@ -26,7 +26,7 @@ class System():
 
         system_A = self.system_dict['system']
         system_B = other.system_dict['system']
-        for prop, value in self.system_dict.items():
+        for prop, value in self.system_dict['system'].items():
             if prop != 'star':
                 if system_A[prop] != system_B[prop]:
                     system_A[prop] = Conflict.resolve(system_A[
