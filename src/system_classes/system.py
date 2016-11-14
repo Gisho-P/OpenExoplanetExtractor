@@ -1,5 +1,8 @@
 import collections
 from star import *
+import sys
+sys.path.insert(0, '..')
+import Conflict
 
 class System():
 
@@ -12,28 +15,6 @@ class System():
 
         self.system_dict = system_dict
 
-        self.initialize_system_dict_values()
-
-        # the case where there are multiple stars
-        if isinstance(self.system_dict['system']['star'], list):
-            self.stars = []
-            for star in self.system_dict['system']['star']:
-                temp_star = Star(star)
-                self.stars.append(temp_star)
-        else:
-            self.stars = Star(self.system_dict['system']['star'])
-
-    def initialize_system_dict_values(self):
-        self.name = self.system_dict['system']['name']
-        self.right_ascension = self.system_dict['system']['rightascension']
-        self.declination = self.system_dict['system']['declination']
-
-        self.distance = self.system_dict['system']['distance']['#text']
-        self.distance_error_minus = self.system_dict['system'][
-	    'distance']['@errorminus']
-        self.distance_error_plus = self.system_dict['system'][
-	    'distance']['@errorplus']
-
     '''(System, System) -> list(list(string))
     Takes another System and compares the values and updates it to other's
     values.
@@ -42,36 +23,26 @@ class System():
     def update(self, other):
 
         updates = []
-        updates += self.update_system_values(other)
 
-        if isinstance(self.system_dict['system']['star'], list):
-            for i, star in enumerate(self.stars):
-                star_updates = self.star.update(other.stars[i],
-		                                self.system_dict[
-		                                    'system']['name'])
-                updates += star_updates
-        else:
-            updates += self.stars.update(other.stars,
-	                                     self.system_dict[
-	                                         'system']['name'])
-        return updates
-
-
-    def update_system_values(self, other):
-        updates = []
-        if not self.name == other.name:
-            updates.add([self.system_dict['name']])
-
-        if not self.right_ascension == other.right_ascension:
-            updates.add([self.system_dict['name'], 'rightascension'])
-
-        if not self.declination == other.declination:
-            updates.add[self.system_dict['name'], 'declination']
-
-        if not self.distance == other.distance:
-            updates.add[self.system_dict['name'], 'distance']
-        if not self.distance_error_minus == other.distance_error_minus:
-            updates.add([self.system_dict['name'], 'distance', '@errorminus'])
-        if not self.distance_error_plus == other.distance_error_plus:
-            updates.add([self.system_dict['name'], 'distance', '@errorplus'])
+        system_A = self.system_dict['system']
+        system_B = other.system_dict['system']
+        for prop, value in system.items():
+            if prop != 'star':
+                if system_A[prop] != system_B[prop]:
+                    system_A[prop] = Conflict.resolve(system_A[
+                        'name'], prop, system_A[prop], system_B[prop])
+                    updates.append([other.system_dict['name'], prop])
+            # dealing with stars
+            else:
+                if isinstance(self.system_dict['system']['star'], list):
+                    for i, star in enumerate(self.stars):
+                        star_updates = self.star.update(other.stars[i],
+                                                        self.system_dict[
+                                                            'system']['name'])
+                        updates += star_updates
+                else:
+                    star_A = Star(self.system_dict['system']['star'])
+                    star_B = Star(other.system_dict['system']['star'])
+                    updates += star_A.update(star_B, self.system_dict[
+                                                         'system']['name'])
         return updates

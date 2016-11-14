@@ -45,5 +45,14 @@ class TestContained(unittest.TestCase):
                                   '2MASS 06474141-0343094'], 'age']]
         self.assertEquals(result, expected)
 
+
+    def test_system_dict(self):
+        #print(self.system_dict['system']['distance'])
+        for key, value in self.system_dict['system'].items():
+            #print(key)
+            if key != 'star':
+                print(self.system_dict['system'][key])
+        self.assertTrue(True)
+
 if __name__ == '__main__':
     unittest.main(exit=False)
