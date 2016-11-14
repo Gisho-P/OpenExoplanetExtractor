@@ -26,7 +26,7 @@ class System():
 
         system_A = self.system_dict['system']
         system_B = other.system_dict['system']
-        for prop, value in system.items():
+        for prop, value in self.system_dict.items():
             if prop != 'star':
                 if system_A[prop] != system_B[prop]:
                     system_A[prop] = Conflict.resolve(system_A[
@@ -35,9 +35,9 @@ class System():
             # dealing with stars
             else:
                 if isinstance(self.system_dict['system']['star'], list):
-                    for i, star in enumerate(self.stars):
-                        star_A = Star(self.system_dict['system']['star'])
-                        star_B = Star(other.system_dict['system']['star'])
+                    for i, star in enumerate(self.system_dict['system']['star']):
+                        star_A = Star(star)
+                        star_B = Star(other.system_dict['system']['star'][i])
                         star_updates = star_A.update(star_B, self.system_dict[
                                                          'system']['name'])
                         updates += star_updates
