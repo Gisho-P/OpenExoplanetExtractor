@@ -35,7 +35,7 @@ class TestContained(unittest.TestCase):
         system_B = System(self.system_dict)
         result = system_A.update(system_B)
         expected = []
-        self.assertEquals(result, expected)
+        self.assertEqual(result, expected)
 
     def test_one_update(self):
         system_A = System(self.system_dict)
@@ -44,7 +44,7 @@ class TestContained(unittest.TestCase):
         result = system_A.update(system_B)
         expected = [['CoRoT-24', ['CoRoT-24',
                                   '2MASS 06474141-0343094'], 'age']]
-        self.assertEquals(result, expected)
+        self.assertEqual(result, expected)
 
 if __name__ == '__main__':
     unittest.main(exit=False)
