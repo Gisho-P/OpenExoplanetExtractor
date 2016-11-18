@@ -1,0 +1,72 @@
+CSCC01 Deliverable 3 Marking Guide
+-----------------------------------
+
+Project Management:   (32/40%)
+
+  Release plan:  3/5
+  	*-1 no project velocity
+	*-1 user story 3 seemingly depends on other user stories
+	but it chosen in the first sprint
+    - each release corresponds to end of Sprint
+    - project fully laid out:
+      for each release date, list of user stories to implement
+    - reasonable goals for each release
+  
+  Product Backlog: 4/5
+  	*-1 user story 1 should be split into two
+    - user stories follow the correct format.
+    - user stories, together, reflect all the user requirements (from
+      all personas).
+    - user stories correspond to actual requirements (no "invented"
+      features).
+    - user stories contain enough information for devs to estimate how
+      long it would take to implement it.
+    - each user story addresses one specific requirement (no "world
+      peace" stories).
+
+  Sprint Backlog(s): 3/5
+  	*-2 should show cost and value in the sprint plan
+     - user stories taken from the Product Backlog
+
+  Sprint Plan(s): 3/5
+  	*-1 no names on sprint plan
+	*-1 no project velocity
+    - user stories divided into tasks when appropriate.
+    - good planning decisions
+
+  Use of Task Board: 5/5
+    - correct format of task boards
+    - snapshots in the begginning and end of each Sprint are provided
+    
+  Use of Burndown Charts: 5/5
+    - correctness of burndown charts
+    - snapshots in the begginning and end of each Sprint are provided
+
+  Use of Repo: 5/5
+    (good use of branches not required here, but is required for next deliverable)
+
+  Use of communication tools: 5/5
+     - evidence of using communication tools of their choice effectively
+
+
+Design and Implementation:  (18/30%)
+
+   System Design: 0/5
+   	*-5 no system design present
+
+   Implementation: 9/10
+   	*-1 no clear instructions
+     - 0 marks if it doesn't run
+     - at least one feature is either fully implemented of nearly implemented
+     - quality and maturity of code
+
+
+Report:  (12/20%)
+
+  - well-presented, is easy to read and to navigate -2 seperate file not listed
+  - spelling and grammar -1 error in readme.md
+  - looks professional
+  - quality of the README file -5 needs instructions on where things are
+
+
+Interview:  (10/10%)
