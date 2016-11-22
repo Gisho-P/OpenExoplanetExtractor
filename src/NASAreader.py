@@ -23,6 +23,33 @@ def readNASAExoplanetArchive():
         
     return mapAttributes(data_dict)
 
+# Recursively searches through a dictionary and removes all empty key value pairs
+def removeEmptyAttributes(catalog_dict):
+    empty_attributes = set()
+    # loop through all attributes
+    for attr in catalog_dict:
+        # If it's a value (i.e a string) then check that it's not empty
+        if(catalog_dict[attr] is None):
+            empty_attributes.add(attr)
+        # If it's a dict, this indicates that we should recursively check this dict for empty values
+        elif((type(catalog_dict[attr]) is dict)):
+            catalog_dict[attr] = removeEmptyAttributes(catalog_dict[attr])
+            if((catalog_dict[attr] is None)):
+                empty_attributes.add(attr)
+        # if it's a list, then check each element for if it's empty
+        elif(type(catalog_dict[attr]) is list and attr != "planet"): # planet is initially empty but will be filled
+            for element in catalog_dict[attr]:
+                if element is None:
+                    catalog_dict[attr].remove(element)
+            if(len(catalog_dict[attr]) == 1):
+                catalog_dict[attr] = catalog_dict[attr][0]
+            if((catalog_dict[attr] is None)):
+                empty_attributes.add(attr)
+    # remove all empty attributes
+    for attr in empty_attributes:
+        catalog_dict.pop(attr)
+    return catalog_dict
+
 def mapAttributes(data_dict):
     found_stars = set()
     final_catalog = []
@@ -65,7 +92,7 @@ def mapAttributes(data_dict):
             }
             
             catalog["star"]["planet"] = []
-            systems.update({data_dict[planet_name]['pl_hostname'] : catalog})
+            systems.update({data_dict[planet_name]['pl_hostname'] : removeEmptyAttributes(catalog)})
             
         planet = {
             'lastupdate': data_dict[planet_name]['rowupdate'],
@@ -94,9 +121,12 @@ def mapAttributes(data_dict):
             }
         }
             
-        systems[data_dict[planet_name]['pl_hostname']]["star"]["planet"].append(planet)            
+        systems[data_dict[planet_name]['pl_hostname']]["star"]["planet"].append(removeEmptyAttributes(planet))            
             
     # Add all system to a list for duplicates
     for system_key in systems:
         final_catalog.append({"system" : systems[system_key]})
     return final_catalog
+
+print(readNASAExoplanetArchive())
+
