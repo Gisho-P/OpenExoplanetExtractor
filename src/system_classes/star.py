@@ -19,10 +19,10 @@ class Star():
         for prop, value in self.star_dict.items():
             if prop != 'planet':
                 if self.star_dict[prop] != other.star_dict[prop]:
-                    self.star_dict[prop] = Conflict.resolve(
-                        system_name + "/" + str(self.star_dict[
-                            'name']), prop, self.star_dict[
-                                prop], other.star_dict[prop])
+                    self.star_dict[prop] = other.star_dict[prop]# Conflict.resolve(
+                        # system_name + "/" + str(self.star_dict[
+                        #   'name']), prop, self.star_dict[
+                        #        prop], other.star_dict[prop])
                     updates.append([system_name, other.star_dict['name'], prop])
             # dealing with planets
             else:

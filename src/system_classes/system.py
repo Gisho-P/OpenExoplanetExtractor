@@ -29,9 +29,9 @@ class System():
         for prop, value in self.system_dict['system'].items():
             if prop != 'star':
                 if system_A[prop] != system_B[prop]:
-                    system_A[prop] = Conflict.resolve(system_A[
-                        'name'], prop, system_A[prop], system_B[prop])
-                    updates.append([other.system_dict['name'], prop])
+                    system_A[prop] = system_B[prop]# Conflict.resolve(system_A[
+                        # 'name'], prop, system_A[prop], system_B[prop])
+                    updates.append([other.system_dict['system']['name'], prop])
             # dealing with stars
             else:
                 if isinstance(self.system_dict['system']['star'], list):
