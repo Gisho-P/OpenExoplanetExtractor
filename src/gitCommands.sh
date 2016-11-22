@@ -1,24 +1,55 @@
-
-
 function cloneRepo {
-	mkdir systems
-	cd systems
-	git clone http://github.com/HarshilPatel12/Test.git
+	if [ -d ./systems ]
+	then
+		cd systems
+		git pull
+		exit
+	else
+		mkdir ./systems
+		cd systems
+		git clone https://username:password@github.com/username/repoName.git
+		exit
+	fi
+	exit
 }
 
 function pullRepo {
 
-	git pull origin $2
+	if [ -d ./systems ]
+	then
+		git pull
+	else
+		mkdir ./systems
+		cd systems
+		git clone https://uername:password@github.com/username/repoName.git
+	fi
+	exit
+}
+
+function addFile {
+	if [ $2 = "." ]
+	then
+		git add .
+	else
+		shift
+		for i in $*
+		do
+			git add $i
+		done
+	fi
 }
 
 function commitRepo {
 
+	cd systems
 	git commit -m "$2"
+	exit
 }
 
 function pushRepo {
 
-	git push origin $2
+	git push
+	exit
 }
 
 if [ $1 = "clone" ]
@@ -39,4 +70,9 @@ fi
 if [ $1 = "commit" ]
 then
 	commitRepo
+fi
+
+if [ $1 = "add" ]
+then
+	addFile
 fi
