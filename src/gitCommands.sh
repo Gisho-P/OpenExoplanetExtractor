@@ -1,7 +1,9 @@
-function cloneRepo {
+#!/bin/bash
+if [ $1 = "clone" ]
+then
 	if [ -d ./systems ]
 	then
-		cd systems
+		cd ./systems
 		git pull
 		exit
 	else
@@ -11,68 +13,65 @@ function cloneRepo {
 		exit
 	fi
 	exit
-}
+fi
 
-function pullRepo {
-
+if [ $1 = "pull" ]
+then
 	if [ -d ./systems ]
 	then
+ 		cd systems
 		git pull
 	else
 		mkdir ./systems
 		cd systems
-		git clone https://uername:password@github.com/username/repoName.git
+		git clone https://username:password@github.com/username/repoName.git
 	fi
 	exit
-}
+fi
 
-function addFile {
-	if [ $2 = "." ]
+
+
+if [ $1 = "push" ]
+then
+	cd ./systems
+	git push https://username:password@github.com/username/repoName.git
+	exit
+fi
+
+
+
+
+
+if [ $1 = "commit" ]
+then
+	cd systems
+	message=""
+	shift
+	for i in $*
+	do
+		message=$message" "$i
+	done
+	git commit -m "$message"
+	exit
+fi
+
+
+
+
+
+
+if [ $1 = "add" ]
+then
+	if [ $2 = '.' ]
 	then
-		git add .
+		cd systems
+		git add $2
 	else
 		shift
+		cd systems
 		for i in $*
 		do
 			git add $i
 		done
 	fi
-}
-
-function commitRepo {
-
-	cd systems
-	git commit -m "$2"
-	exit
-}
-
-function pushRepo {
-
-	git push
-	exit
-}
-
-if [ $1 = "clone" ]
-then
-	cloneRepo
-fi
-
-if [ $1 = "pull" ]
-then
-	pullRepo
-fi
-
-if [ $1 = "push" ]
-then
-	pushRepo
-fi
-
-if [ $1 = "commit" ]
-then
-	commitRepo
-fi
-
-if [ $1 = "add" ]
-then
-	addFile
 fi
