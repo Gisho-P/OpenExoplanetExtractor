@@ -20,5 +20,18 @@ How to Run the code:
 To run any py files, all the .py files are in the same directory
 The deliverable 3 part 2 report is located under sprint1->Documentation
 
-Sources Used for Deliverable 4:
-1) https://pypi.python.org/pypi/gitdict/0.1.2
+Deliverable 4:
+
+Code Inspection Video: https://drive.google.com/file/d/0By3csrjziWd6V1U3UFp3NFZJVEE/view
+
+Evidence for requesting a validation:  ./ValidationRequest.jpg
+
+Evidence that client has validated:    ./ClientValidation.jpg
+
+How to run:
+
+1) Install all the .py files in one directory or clone it in a directory
+
+2) Put all the systems class given from hanno(the .xml file) into a directory called systems
+
+3) Then start running the code
