@@ -15,6 +15,13 @@ class System():
 
         self.system_dict = system_dict
 
+
+    def getDict(self):
+        return self.system_dict
+
+    def getName(self):
+        return self.system_dict['system']['name'] 
+
     '''(System, System) -> list(list(string))
     Takes another System and compares the values and updates it to other's
     values.
