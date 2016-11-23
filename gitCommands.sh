@@ -3,13 +3,13 @@ if [ $1 = "clone" ]
 then
 	if [ -d ./systems ]
 	then
-		cd systems/Test
+		cd ./systems
 		git pull
 		exit
 	else
 		mkdir ./systems
 		cd systems
-		git clone https://HarshilPatel12:harshilpatel1@github.com/HarshilPatel12/Test.git
+		git clone https://username:password@github.com/username/repoName.git
 		exit
 	fi
 	exit
@@ -19,11 +19,12 @@ if [ $1 = "pull" ]
 then
 	if [ -d ./systems ]
 	then
+ 		cd systems
 		git pull
 	else
 		mkdir ./systems
 		cd systems
-		git clone https://HarshilPatel12:harshilpatel1@github.com/HarshilPatel12/Test.git
+		git clone https://username:password@github.com/username/repoName.git
 	fi
 	exit
 fi
@@ -32,7 +33,8 @@ fi
 
 if [ $1 = "push" ]
 then
-	git push https://HarshilPatel12:harshilpatel1@github.com/HarshilPatel12/Test.git
+	cd ./systems
+	git push https://username:password@github.com/username/repoName.git
 	exit
 fi
 
@@ -42,8 +44,14 @@ fi
 
 if [ $1 = "commit" ]
 then
-	cd systems/Test
-	git commit -m "'"$2"'"
+	cd systems
+	message=""
+	shift
+	for i in $*
+	do
+		message=$message" "$i
+	done
+	git commit -m "$message"
 	exit
 fi
 
@@ -56,11 +64,11 @@ if [ $1 = "add" ]
 then
 	if [ $2 = '.' ]
 	then
-		cd systems/Test
+		cd systems
 		git add $2
 	else
 		shift
-		cd systems/Test
+		cd systems
 		for i in $*
 		do
 			git add $i
