@@ -50,6 +50,29 @@ def removeEmptyAttributes(catalog_dict):
         catalog_dict.pop(attr)
     return catalog_dict
 
+# Format Right Ascension and Declination for OEC
+def dd2hms(dd, ra):
+    deg = int(dd)
+    if(ra):
+        hr = deg * 24. / 360
+    else:
+        hr = deg
+    mindec= (dd-deg) * 60
+    min = int(mindec)
+    sec = (mindec-min) * 60
+    return str("%02d" % (int(hr)),) + " " + str("%02d" % (abs(min),)) + " " + str("%02d" % (abs(int(sec)),))
+
+# Format discovery method for OEC
+def disc_method(st):
+    if st == "Radial Velocity":
+        return 'RV'
+    else:
+        return st[0].lower() + st[1:]
+
+def round_one(num):
+    if num != None:
+        return round(num, 1)
+
 def mapAttributes(data_dict):
     found_stars = set()
     final_catalog = []
@@ -63,7 +86,7 @@ def mapAttributes(data_dict):
             found_stars.add(data_dict[planet_name]['pl_hostname'])
             catalog = {
                 'name': data_dict[planet_name]['pl_hostname'],
-                'rightascension': data_dict[planet_name]['ra'],
+                'rightascension': dd2hms(float(data_dict[planet_name]['ra']), True),
                 'star':{
                     'temperature':{
                         '@errorplus': data_dict[planet_name]['st_tefferr1'],
@@ -88,7 +111,7 @@ def mapAttributes(data_dict):
                     '@errorminus': data_dict[planet_name]['st_disterr2'],
                     '#text': data_dict[planet_name]['st_dist']
                     },
-                'declination':data_dict[planet_name]['dec']
+                'declination': dd2hms(float(data_dict[planet_name]['dec']), False)
             }
             
             catalog["star"]["planet"] = []
@@ -97,9 +120,9 @@ def mapAttributes(data_dict):
         planet = {
             'lastupdate': data_dict[planet_name]['rowupdate'],
             'period':{
-                '@errorplus': data_dict[planet_name]['pl_orbpererr1'],
-                '@errorminus': data_dict[planet_name]['pl_orbpererr2'],
-                '#text': data_dict[planet_name]['pl_orbper']
+                '@errorplus': round_one(data_dict[planet_name]['pl_orbpererr1']),
+                '@errorminus': round_one(data_dict[planet_name]['pl_orbpererr2']),
+                '#text': round_one(data_dict[planet_name]['pl_orbper'])
                 },
             'name': planet_name,
             'semimajoraxis':{
@@ -113,7 +136,7 @@ def mapAttributes(data_dict):
                 '#text': data_dict[planet_name]['st_rad']
                 },
             'eccentricity': data_dict[planet_name]['pl_orbeccen'],
-            'discoverymethod':data_dict[planet_name]['pl_discmethod'],
+            'discoverymethod': disc_method(data_dict[planet_name]['pl_discmethod']),
             'inclination':{
                 '@errorplus': data_dict[planet_name]['pl_orbinclerr1'],
                 '@errorminus': data_dict[planet_name]['pl_orbinclerr2'],
@@ -127,6 +150,3 @@ def mapAttributes(data_dict):
     for system_key in systems:
         final_catalog.append({"system" : systems[system_key]})
     return final_catalog
-
-print(readNASAExoplanetArchive())
-
