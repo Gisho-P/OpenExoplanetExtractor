@@ -9,12 +9,12 @@ class Star():
 
         self.star_dict = star_dict
 
-    '''(Star, Star) -> list(list(string))
-    Takes another System and compares the values and updates it to other's
-    values.
-    Returns a list of all the updated values
-    '''
     def update(self, other, system_name):
+        '''(Star, Star) -> list(list(string))
+        Takes another System and compares the values and updates it to other's
+        values.
+        Returns a list of all the updated values
+        '''
         updates = []
         for prop, value in self.star_dict.items():
             if prop != 'planet':
