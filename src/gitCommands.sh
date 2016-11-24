@@ -75,3 +75,11 @@ then
 		done
 	fi
 fi
+
+if [ $1 = "branch" ]
+then
+	cd systems/Test
+	git branch $2
+	git checkout $2
+	git push https://username:password@github.com/username/repoName.git $2
+fi
