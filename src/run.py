@@ -7,14 +7,12 @@ sys.path.append('/system_classes')
 import system
 
 def run(argv):
-    uflag = False
-    rflag = False
-    aflag = False
-    eflag = False
+    uflag = rflag = aflag = False
+    repo_name = []
     try:
-        opts, args = getopt.getopt(argv, "u:r:a:e:", ["update=", "resolve=", "auto=", "email="])
+        opts, args = getopt.getopt(argv, "u:r:a:", ["update=", "resolve=", "auto="])
     except getopt.GetoptError:
-        print "run.py -u <repo name> -r <m/t> -a <#ofHours> -e <email Address>"
+        print("run.py -u <repo name/all> -r <m/t> -a <#ofHours>")
     # read command line arguments
     for opt, arg in opts:
         if opt in ("-u", "--update"):
@@ -29,10 +27,7 @@ def run(argv):
             # set how often the program will automatically run
             auto_resolve_input = arg
             aflag = True
-        elif opt in ("-e", "--email"):
-            # add/ remove an email from the emailing list
-            email_input = arg
-            eflag = True
+
 
     # handle configuration command options first
     if(rflag):
@@ -45,45 +40,53 @@ def run(argv):
             # TODO
         else:
             print("%s is not a recognised option")
+
+
     if(aflag):
         # set how often the program will auto run
         print("The merge will run every %s hours" % (auto_resolve_input))
         # TODO
-    if(eflag):
-        # if email is already in mailing list remove it
-        # otherwise add it
-        # email list used to send report email after successful merge and
-        # report if conflict emerged
-        print("email : %s added/removed from mailing list" % (email_input))
-        #TODO
 
 
     # run merge after options are set
     if(uflag):
+        print(repo_name)
         if repo_name in ("NASA", "Nasa", "nasa", "n"):
             print("Merging Open exoplanet Catalogue with NASA exoplanet Archive")
-            other_repo = NASAreader.readNASA()
+            ext_repo = NASAreader.readNASA()
         elif repo_name in ("EU", "eu", "exoplanet.eu"):
             print("Merging Open exoplanet Catalogue with The Extrasolar Planets Encyclopaedia")
-            other_repo = exoplanetEUreader.readExoplaneteu()
+            ext_repo = exoplanetEUreader.readExoplaneteu()
+        elif: repo_name in ("all", "All", "ALL"):
+        	print("Merging with all repositories")
+        	ext_repo = NASAreader.readNASA()
+        	ext_repo.update(exoplanetEUreader.readExoplaneteu())
+        	# append other repos here
         # add new exoplanet repos/archives/catalogues here
         else:
-            print("%s is not a recognised repository")
+            print("%s is not a recognised repository" % (repo_name))
 
-        if(other_repo is not None):
+        if(ext_repo is not None):
+        	# gitClone()
             # list of system objects from other repository
-            other_systems = []
+            ext_repo = []
+            update_log = []
             # create system object from each dict
-            for other_system_dict in other_repo:
+            for ext_system_dict in ext_repo:
+            	system_updated = False
                 # convert to object
-                other_system = System(other_system_dict)
-                other_systems.push(other_system)
+                ext_system = System(ext_system_dict)
+                ext_systems.append(ext_system)
                 # read oec system into object
-                oec_system = searchForSys(other_system.mainName)
-                # merge the two systems
-                oec_system.update(other_system)
-                updated_systems.push(oec_system)
-            print(updated_systems)
+                oec_system = readSystem(ext_system.system_dict[name][0])
+                if(oec_system is not None):
+                	#merge the two
+                	system_updated = True
+                	update_log.append(oec_system.update(ext_system))
+
+                writeSystem(oec_system)
+                # addFile(path)
+			#gitPush()
 
 
 
