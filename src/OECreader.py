@@ -12,8 +12,8 @@ from system import *
 def writeSystem(system_obj):
     ''' Write a system object representation of a system to a xml file in the
     local copy of the oec'''
-    system_xml = dicttoxml.dicttoxml(system_obj.toDict(), root=False, attr_type=False)
-    path = findSystem(system_obj.mainName)
+    system_xml = dicttoxml.dicttoxml(system_obj.getDict(), root=False, attr_type=False)
+    path = findSystem(system_obj.getName())
     file = open(path,"w")
     file.truncate()
     file.write(system_xml + "\n")
@@ -22,39 +22,30 @@ def writeSystem(system_obj):
 
 def readSystem(system_name):
     ''' Read system xml of oec local copy'''
-    path = findSystem(system_name)
-    file = open(path,"r")
-    data = file.read()
-    # Temporary fix, ****CHECK LATER*****
-    data = data[3:]
-    sys_dict = xmltodict.parse(data, dict_constructor=dict)
-    system = System(sys_dict)
-    return(system)
+    (name, path) = findSystem(system_name)
+    if name is not None:
+        file = open(path,"r")
+        data = file.read()
+        # Temporary fix, ****CHECK LATER*****
+        data = data[3:]
+        sys_dict = xmltodict.parse(data, dict_constructor=dict)
+        system = System(sys_dict)
+        return system
+    else:
+        return None
 
-def findSystem(system_name):
+
+def findSystem(system_names):
     ''' Read system xml of oec local copy'''
+    path = None
     # Search the directory for the name
     fileList = os.listdir('./systems')
-    # Loop through and get rid of all the file extensions
-    path = " "
-    for name in fileList:
-        if(name[:len(name) -4] == system_name):
-            # Return the path of the file
-            path = "./systems/" + system_name + ".xml"
-    # Take the path and read the data in the path
-    return path
-
-
-
-
-
-
-
-
-
-
-
-#print(readOEC())
-#print(dicttoXML(readCatalogue()))
-#print(csvToDictToXML())
-#searchForSys('11 Com')
+    print(fileList)
+    # search through and try and find a matching file
+    for name in system_names:
+        if name + ".xml" in fileList:
+            # if found return the name that was used and a path to the
+            # file
+            path = "./systems/" + name + ".xml"
+            return (name, path)
+    return (None, path)
