@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+
 import sys, getopt
 import datetime
 from gitCommands import *
-import exoplanetEUreader
-import NASAreader
-import OECreader
+from exoplanetEUreader import *
+from  NASAreader import *
+from OECreader import *
 sys.path.append('/system_classes')
 from system import *
 
