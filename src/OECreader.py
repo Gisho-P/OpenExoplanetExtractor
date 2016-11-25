@@ -13,7 +13,7 @@ def writeSystem(system_name, system_obj):
     ''' Write a system object representation of a system to a xml file in the
     local copy of the oec'''
     system_xml = dicttoxml.dicttoxml(system_obj.getDict(), root=False, attr_type=False)
-    path = findSystem(system_name)
+    path = "./systems/" + system_name + ".xml"
     file = open(path,"w")
     file.truncate()
     file.write(system_xml + "\n")
