@@ -80,7 +80,6 @@ def run(argv):
                 oec_system_updates = []
                 # convert to object
                 ext_system = System(ext_system_dict)
-                ext_systems.append(ext_system)
                 # read oec system into object
                 (oec_name, oec_system) = readSystem(ext_system.getName())
 
