@@ -54,14 +54,14 @@ def run(argv):
         ext_repo = []
         if repo_name in ("NASA", "Nasa", "nasa", "n"):
             print("Merging Open exoplanet Catalogue with NASA exoplanet Archive")
-            ext_repo = NASAreader.readNASA()
+            ext_repo = readNASA()
         elif repo_name in ("EU", "eu", "exoplanet.eu"):
             print("Merging Open exoplanet Catalogue with The Extrasolar Planets Encyclopaedia")
-            ext_repo = exoplanetEUreader.readExoplaneteu()
+            ext_repo = readExoplaneteu()
         elif repo_name in ("all", "All", "ALL"):
             print("Merging with all repositories")
-            ext_repo = NASAreader.readNASA()
-            ext_repo.update(exoplanetEUreader.readExoplaneteu())
+            ext_repo = readNASA()
+            ext_repo.update(readExoplaneteu())
             # append other repos here
         # add new exoplanet repos/archives/catalogues here
         else:
