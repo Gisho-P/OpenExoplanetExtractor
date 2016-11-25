@@ -6,7 +6,7 @@ import exoplanetEUreader
 import NASAreader
 import OECreader
 sys.path.append('/system_classes')
-import system
+from system import *
 
 def run(argv):
     uflag = rflag = aflag = False
