@@ -24,9 +24,9 @@ class System():
         '''(System) -> list(str)
         Returns the name(s) of the System
         '''
-        return self.system_dict['system']['name']
+        return self.system_dict['system']['name'] 
 
-
+    
     def update(self, other):
         '''(System, System) -> list(list(string))
         Takes another System and compares the values and updates it to other's
