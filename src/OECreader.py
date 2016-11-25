@@ -9,30 +9,28 @@ sys.path.insert(0, './system_classes')
 from system import *
 
 
-def writeSystem(system_obj):
+def writeSystem(system_name, system_obj):
     ''' Write a system object representation of a system to a xml file in the
     local copy of the oec'''
     system_xml = dicttoxml.dicttoxml(system_obj.getDict(), root=False, attr_type=False)
-    path = findSystem(system_obj.getName())
+    path = findSystem(system_name)
     file = open(path,"w")
     file.truncate()
     file.write(system_xml + "\n")
     file.close()
 
 
-def readSystem(system_name):
+def readSystem(system_names):
     ''' Read system xml of oec local copy'''
-    (name, path) = findSystem(system_name)
+    (name, path) = findSystem(system_names)
     if name is not None:
-        file = open(path,"r")
+        file = open(path, "r", encoding='utf-8-sig')
         data = file.read()
-        # Temporary fix, ****CHECK LATER*****
-        data = data[3:]
         sys_dict = xmltodict.parse(data, dict_constructor=dict)
         system = System(sys_dict)
-        return system
+        return (name, system)
     else:
-        return None
+        return (name, None)
 
 
 def findSystem(system_names):
