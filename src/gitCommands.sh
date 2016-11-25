@@ -78,8 +78,14 @@ fi
 
 if [ $1 = "branch" ]
 then
-	cd systems/Test
+	cd systems
 	git branch $2
 	git checkout $2
 	git push https://username:password@github.com/username/repoName.git $2
+fi
+
+if [ $1 = "checkout" ]
+then
+	cd systems
+	git checkout $2
 fi

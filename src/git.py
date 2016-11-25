@@ -25,4 +25,7 @@ def branch(branch_name):
 	p = subprocess.Popen(args=['./gitCommands.sh branch ' + branch_name], shell=True)
 	p.wait()
 
-branch("b")
+def checkout(branch_name):
+	p = subprocess.Popen(args=['./gitCommands.sh checkout ' + branch_name], shell=True)
+	p.wait()
+checkout("b")
