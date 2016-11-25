@@ -6,21 +6,21 @@ import dicttoxml
 import collections
 
 
-def readNASAExoplanetArchive():
-    
+def readNASA():
+
     url = "http://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json"
     data = urllib.request.urlopen(url).read().decode('utf-8')
     reader = json.loads(data)
     data_dict = {}
-    
-    # Set the planet_name as key 
-    # All other attributes are stored as a value 
+
+    # Set the planet_name as key
+    # All other attributes are stored as a value
     for index in range(0, len(reader) - 1):
         pl_name = reader[index]['pl_hostname']
         plname_with_letter = "%s %s" % (pl_name, reader[index]['pl_letter'])
         del reader[index]['pl_letter']
         data_dict[plname_with_letter] = reader[index]
-        
+
     return mapAttributes(data_dict)
 
 # Recursively searches through a dictionary and removes all empty key value pairs
@@ -78,8 +78,8 @@ def mapAttributes(data_dict):
     final_catalog = []
     systems = {}
     catalog = {}
-    # Organize by system 
-    # Add to system if planet orbits the star 
+    # Organize by system
+    # Add to system if planet orbits the star
     for planet_name in data_dict:
         # pl_hostname is interchangable with the system/star name
         if ((data_dict[planet_name]['pl_hostname'] not in found_stars)):
@@ -105,7 +105,7 @@ def mapAttributes(data_dict):
                         '#text': data_dict[planet_name]['st_mass']
                     }
                 },
-                
+
                 'distance':{
                     '@errorplus': data_dict[planet_name]['st_disterr1'],
                     '@errorminus': data_dict[planet_name]['st_disterr2'],
@@ -113,10 +113,10 @@ def mapAttributes(data_dict):
                     },
                 'declination': dd2hms(float(data_dict[planet_name]['dec']), False)
             }
-            
+
             catalog["star"]["planet"] = []
             systems.update({data_dict[planet_name]['pl_hostname'] : removeEmptyAttributes(catalog)})
-            
+
         planet = {
             'lastupdate': data_dict[planet_name]['rowupdate'],
             'period':{
@@ -143,9 +143,9 @@ def mapAttributes(data_dict):
                 '#text': data_dict[planet_name]['pl_orbincl']
             }
         }
-            
-        systems[data_dict[planet_name]['pl_hostname']]["star"]["planet"].append(removeEmptyAttributes(planet))            
-            
+
+        systems[data_dict[planet_name]['pl_hostname']]["star"]["planet"].append(removeEmptyAttributes(planet))
+
     # Add all system to a list for duplicates
     for system_key in systems:
         final_catalog.append({"system" : systems[system_key]})
