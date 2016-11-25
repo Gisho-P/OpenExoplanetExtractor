@@ -34,8 +34,8 @@ class Star():
                             planet_B, system_name, other.star_dict['name'])
                         updates += planet_updates
                 else:
-                    planet_A = Planet(self.star_dict['system']['star'])
-                    planet_B = Planet(other.star_dict['system']['star'])
+                    planet_A = Planet(self.star_dict['planet'])
+                    planet_B = Planet(other.star_dict['planet'])
                     updates += planet_A.update(planet_B,
                                                system_name, other.star_dict[
                                                    'name'])
