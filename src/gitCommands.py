@@ -1,31 +1,31 @@
 import subprocess
 
 
-def pull():
+def gitPull():
 	p = subprocess.Popen(args=['./gitCommands.sh pull' ], shell=True)
 	p.wait()
 
-def commit(message):
+def gitCommit(message):
 	p = subprocess.Popen(args=['./gitCommands.sh commit ' + message], shell=True)
 	p.wait()
 
-def addFile(files):
+def gitAdd(files):
 	p = subprocess.Popen(args=['./gitCommands.sh add ' + files], shell=True)
 	p.wait()
 
-def clone():
+def gitClone():
 	p = subprocess.Popen(args=['./gitCommands.sh clone'],shell=True)
 	p.wait()
 
-def push():
+def gitPush():
 	p = subprocess.Popen(args=['./gitCommands.sh push'], shell=True)
 	p.wait()
 
-def branch(branch_name):
+def gitBranch(branch_name):
 	p = subprocess.Popen(args=['./gitCommands.sh branch ' + branch_name], shell=True)
 	p.wait()
 
-def checkout(branch_name):
+def gitCheckout(branch_name):
 	p = subprocess.Popen(args=['./gitCommands.sh checkout ' + branch_name], shell=True)
 	p.wait()
-checkout("b")
+
