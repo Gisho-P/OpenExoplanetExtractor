@@ -39,5 +39,5 @@ class Star():
                     updates += planet_A.update(planet_B,
                                                system_name, other.star_dict[
                                                    'name'])
-        
+
         return updates

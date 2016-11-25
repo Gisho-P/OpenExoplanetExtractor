@@ -404,5 +404,5 @@ def dicttoxml(obj, root=True, custom_root='root', ids=False, attr_type=True,
     )
     else:
         addline(convert(obj, ids, attr_type, item_func, cdata, parent=''))
-    return ''.join(output).encode('utf-8')
+    return ''.join(output)
 

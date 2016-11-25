@@ -184,5 +184,4 @@ def mapAttributes(data_dict):
         final_catalog.append({"system" : systems[system_key]})
     return final_catalog
 
-print(readExoplaneteu())
-        
+

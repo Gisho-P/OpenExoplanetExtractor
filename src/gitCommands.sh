@@ -1,7 +1,9 @@
-function cloneRepo {
+#!/bin/bash
+if [ $1 = "clone" ]
+then
 	if [ -d ./systems ]
 	then
-		cd systems
+		cd ./systems
 		git pull
 		exit
 	else
@@ -11,68 +13,79 @@ function cloneRepo {
 		exit
 	fi
 	exit
-}
+fi
 
-function pullRepo {
-
+if [ $1 = "pull" ]
+then
 	if [ -d ./systems ]
 	then
+ 		cd systems
 		git pull
 	else
 		mkdir ./systems
 		cd systems
-		git clone https://uername:password@github.com/username/repoName.git
+		git clone https://username:password@github.com/username/repoName.git
 	fi
 	exit
-}
+fi
 
-function addFile {
-	if [ $2 = "." ]
+
+
+if [ $1 = "push" ]
+then
+	cd ./systems
+	git push https://username:password@github.com/username/repoName.git
+	exit
+fi
+
+
+
+
+
+if [ $1 = "commit" ]
+then
+	cd systems
+	message=""
+	shift
+	for i in $*
+	do
+		message=$message" "$i
+	done
+	git commit -m "$message"
+	exit
+fi
+
+
+
+
+
+
+if [ $1 = "add" ]
+then
+	if [ $2 = '.' ]
 	then
-		git add .
+		cd systems
+		git add $2
 	else
 		shift
+		cd systems
 		for i in $*
 		do
 			git add $i
 		done
 	fi
-}
+fi
 
-function commitRepo {
-
+if [ $1 = "branch" ]
+then
 	cd systems
-	git commit -m "$2"
-	exit
-}
-
-function pushRepo {
-
-	git push
-	exit
-}
-
-if [ $1 = "clone" ]
-then
-	cloneRepo
+	git branch $2
+	git checkout $2
+	git push https://username:password@github.com/username/repoName.git $2
 fi
 
-if [ $1 = "pull" ]
+if [ $1 = "checkout" ]
 then
-	pullRepo
-fi
-
-if [ $1 = "push" ]
-then
-	pushRepo
-fi
-
-if [ $1 = "commit" ]
-then
-	commitRepo
-fi
-
-if [ $1 = "add" ]
-then
-	addFile
+	cd systems
+	git checkout $2
 fi
