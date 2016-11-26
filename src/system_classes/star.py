@@ -9,20 +9,20 @@ class Star():
 
         self.star_dict = star_dict
 
-    '''(Star, Star) -> list(list(string))
-    Takes another System and compares the values and updates it to other's
-    values.
-    Returns a list of all the updated values
-    '''
     def update(self, other, system_name):
+        '''(Star, Star) -> list(list(string))
+        Takes another System and compares the values and updates it to other's
+        values.
+        Returns a list of all the updated values
+        '''
         updates = []
         for prop, value in self.star_dict.items():
             if prop != 'planet':
                 if self.star_dict[prop] != other.star_dict[prop]:
-                    self.star_dict[prop] = Conflict.resolve(
-                        system_name + "/" + str(self.star_dict[
-                            'name']), prop, self.star_dict[
-                                prop], other.star_dict[prop])
+                    self.star_dict[prop] = other.star_dict[prop]# Conflict.resolve(
+                        # system_name + "/" + str(self.star_dict[
+                        #   'name']), prop, self.star_dict[
+                        #        prop], other.star_dict[prop])
                     updates.append([system_name, other.star_dict['name'], prop])
             # dealing with planets
             else:
@@ -34,10 +34,10 @@ class Star():
                             planet_B, system_name, other.star_dict['name'])
                         updates += planet_updates
                 else:
-                    planet_A = Planet(self.system_dict['system']['star'])
-                    planet_B = Planet(other.system_dict['system']['star'])
+                    planet_A = Planet(self.star_dict['planet'])
+                    planet_B = Planet(other.star_dict['planet'])
                     updates += planet_A.update(planet_B,
                                                system_name, other.star_dict[
                                                    'name'])
-        
+
         return updates

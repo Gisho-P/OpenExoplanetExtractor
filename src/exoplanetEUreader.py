@@ -42,7 +42,19 @@ def removeEmptyAttributes(catalog_dict):
     for attr in empty_attributes:
         catalog_dict.pop(attr)
     return catalog_dict
-            
+
+# Converts from degrees, to hms. Pass true for second arg if converting for right ascension
+def dd2hms(dd, ra):
+    deg = int(dd)
+    if(ra):
+        hr = deg * 24. / 360
+    else:
+        hr = deg
+    mindec= (dd-deg) * 60
+    min = int(mindec)
+    sec = (mindec-min) * 60
+    return str("%02d" % (int(hr)),) + " " + str("%02d" % (abs(min),)) + " " + str("%02d" % (abs(int(sec)),))
+
 # Maps the values extracted from the EU sites exoplanets to the corresponding names in the OEC format to a dictionary
 def mapAttributes(data_dict):
     found_stars = set()
@@ -56,7 +68,8 @@ def mapAttributes(data_dict):
             found_stars.add(data_dict[planet_name]['star_name'])
             catalog = {
                'name': data_dict[planet_name]['star_name'],
-               'rightascension': data_dict[planet_name]['ra'],
+               'rightascension': dd2hms(float(data_dict[planet_name]['ra']), True),
+               'declination': dd2hms(float(data_dict[planet_name]['dec']), False),
                'star':{
                   'temperature':{
                      '@errorplus': data_dict[planet_name]['star_teff_error_max'],
@@ -171,5 +184,4 @@ def mapAttributes(data_dict):
         final_catalog.append({"system" : systems[system_key]})
     return final_catalog
 
-print(readExoplaneteu())
-        
+
