@@ -3,8 +3,8 @@ from configparser import ConfigParser
 class Conflict:
     config = ConfigParser()
     config.read('config.ini')
-    auto_resolve = config['DEFAULT']['Auto'].getboolean('on')
-    resolve_mc = config['DEFAULT']['Conflict'].getboolean('mine')
+    auto_resolve = config['DEFAULT']['Auto'] == "on"
+    resolve_mc = config['DEFAULT']['Conflict'] == "mine"
     def resolve(path, value, my_conflict, their_conflict):
         if Conflict.isConflicting(my_conflict, their_conflict):
             if Conflict.auto_resolve:
