@@ -15,7 +15,6 @@ def run(argv):
     config.read('config.ini')
 
     uflag = aflag = rflag = fflag = False
-    opts = args = None
     try :
         (opts, args) = getopt.getopt(argv, "u:a:r:f:", ["update=", "auto=", "resolve=", "freq="])
     except getopt.GetoptError:
