@@ -8,46 +8,59 @@ from  NASAreader import *
 from OECreader import *
 sys.path.append('/system_classes')
 from system import *
+from configparser import ConfigParser
 
 def run(argv):
-    uflag = rflag = aflag = False
+    config = ConfigParser()
+    config.read('config.ini')
+
+    uflag = aflag = rflag = fflag = False
     try :
-        (opts, args) = getopt.getopt(argv, "u:r:a:", ["update=", "resolve=", "auto="])
+        (opts, args) = getopt.getopt(argv, "u:a:r:f:", ["update=", "auto=", "resolve=", "freq="])
     except getopt.GetoptError:
-        print("run.py -u <repo name/all> -r <m/t> -a <#ofHours>")
+        print("run.py -u <repo name/all> -a <on/off> -r <m/t> -f <#ofHours>")
     # read command line arguments
     for opt, arg in opts:
         if opt in ("-u", "--update"):
             # run merge functionality on give repo name
             repo_name = arg
-            uflag = True
-        elif opt in ("-r", "--resolve"):
-            # set value for auto resolving
-            resolve_input = arg
-            rflag = True
+            uflag = True      
         elif opt in ("-a", "--auto"):
             # set how often the program will automatically run
             auto_resolve_input = arg
             aflag = True
+        elif opt in ("-r", "--resolve"):
+            # set value for auto resolving
+            resolve_input = arg
+            rflag = True        
+        elif opt in ("-f", "--freq"):
+            # set how often the program will automatically run
+            run_frequency_input = arg
+            fflag = True  
 
+    if(aflag):
+        # set how often the program will auto run
+        print("Auto resolve is %s" % (auto_resolve_input))
+        config["DEFAULT"]["Auto"] = str(auto_resolve_input)
 
     if(rflag):
         # set resolve value and save to config file
         if resolve_input == "m":
             print("Auto resolve set to my conflict")
-            # TODO
+            config["DEFAULT"]["Conflict"] = "mine"
         elif resolve_input == "t":
             print("Auto resolve set to their conflict")
-            # TODO
+            config["DEFAULT"]["Conflict"] = "theirs"
         else:
             print("%s is not a recognised option" % (resolve_input))
-
-
-    if(aflag):
+    
+    if(fflag):
         # set how often the program will auto run
-        print("The merge will run every %s hours" % (auto_resolve_input))
-        # TODO
+        print("The merge will run every %s hours" % (run_frequency_input))
+        config["DEFAULT"]["Frequency"] = str(run_frequency_input)
 
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
 
     # run merge after options are set
     if(uflag):

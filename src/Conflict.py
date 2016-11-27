@@ -1,7 +1,10 @@
+from configparser import ConfigParser
+
 class Conflict:
-    # to be stored in config file
-    auto_resolve = False;
-    resolve_mc = True;
+    config = ConfigParser()
+    config.read('config.ini')
+    auto_resolve = config['DEFAULT']['Auto'].getboolean('on')
+    resolve_mc = config['DEFAULT']['Conflict'].getboolean('mine')
     def resolve(path, value, my_conflict, their_conflict):
         if Conflict.isConflicting(my_conflict, their_conflict):
             if Conflict.auto_resolve:
