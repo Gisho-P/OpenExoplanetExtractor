@@ -24,7 +24,7 @@ def run(argv):
         if opt in ("-u", "--update"):
             # run merge functionality on give repo name
             repo_name = arg
-            uflag = True      
+            uflag = True
         elif opt in ("-a", "--auto"):
             # set how often the program will automatically run
             auto_resolve_input = arg
@@ -32,11 +32,11 @@ def run(argv):
         elif opt in ("-r", "--resolve"):
             # set value for auto resolving
             resolve_input = arg
-            rflag = True        
+            rflag = True
         elif opt in ("-f", "--freq"):
             # set how often the program will automatically run
             run_frequency_input = arg
-            fflag = True  
+            fflag = True
 
     if(aflag):
         # set how often the program will auto run
@@ -53,7 +53,7 @@ def run(argv):
             config["DEFAULT"]["Conflict"] = "theirs"
         else:
             print("%s is not a recognised option" % (resolve_input))
-    
+
     if(fflag):
         # set how often the program will auto run
         print("The merge will run every %s hours" % (run_frequency_input))
@@ -66,10 +66,10 @@ def run(argv):
     if(uflag):
         ext_repo = []
         if repo_name in ("NASA", "Nasa", "nasa", "n"):
-            print("Merging Open exoplanet Catalogue with NASA exoplanet Archive")
+            print("Merging Open Exoplanet Catalogue with NASA exoplanet Archive")
             ext_repo = readNASA()
         elif repo_name in ("EU", "eu", "exoplanet.eu"):
-            print("Merging Open exoplanet Catalogue with The Extrasolar Planets Encyclopaedia")
+            print("Merging Open Exoplanet Catalogue with The Extrasolar Planets Encyclopaedia")
             ext_repo = readExoplaneteu()
         elif repo_name in ("all", "All", "ALL"):
             print("Merging with all repositories")
@@ -84,7 +84,7 @@ def run(argv):
             numUpdated = numAdded = 0
             update_log = []
             gitClone()
-            branch_name = '{:%Y-%b-%d %H}'.format(datetime.datetime.now())
+            branch_name = '{:%m-%d-%H-%M}'.format(datetime.datetime.now())
             gitBranch(branch_name)
 
 
@@ -101,26 +101,28 @@ def run(argv):
 
                 if(oec_system is not None):
                     # if it exists updated it
-                    system_updated = True
                     oec_system_updates = oec_system.update(ext_system)
                     update_log.extend(oec_system_updates)
                     if len(oec_system_updates) != 0:
+                        system_updated = True
                         numUpdated += 1
                 else:
                     # otherwise the system is added
                     oec_system = ext_system
-                    oec_name = ext_system.getName()[0]
+                    oec_name = ext_system.getName()
                     numAdded += 1
+                    system_updated = True
 
                 writeSystem(oec_name, oec_system)
 
-                # if file created or changed
-                if((oec_system is None) or len(oec_system_updates) != 0):
+                # if file created or changed then git add the changes
+                if system_updated:
                     gitAdd(oec_name)
 
-            commit_message = "%s: update| Updated %d systems | Added %d systems" % (
+            commit_message = "%s: update, Updated %d systems, Added %d systems" % (
                 '{:%Y-%b-%d}'.format(datetime.datetime.now()),
                 numUpdated, numAdded)
+            print(commit_message)
             gitCommit(commit_message)
             gitPush()
 
