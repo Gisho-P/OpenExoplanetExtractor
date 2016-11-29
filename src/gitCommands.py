@@ -6,11 +6,11 @@ def gitPull():
 	p.wait()
 
 def gitCommit(message):
-	p = subprocess.Popen(args=['./gitCommands.sh commit ' + message], shell=True)
+	p = subprocess.Popen(args=["./gitCommands.sh commit '%s'" %(message)], shell=True)
 	p.wait()
 
-def gitAdd(files):
-	p = subprocess.Popen(args=['./gitCommands.sh add ' + files], shell=True)
+def gitAdd(file):
+	p = subprocess.Popen(args=["./gitCommands.sh add '%s'" %(file)], shell=True)
 	p.wait()
 
 def gitClone():
@@ -22,10 +22,10 @@ def gitPush():
 	p.wait()
 
 def gitBranch(branch_name):
-	p = subprocess.Popen(args=['./gitCommands.sh branch ' + branch_name], shell=True)
+	p = subprocess.Popen(args=["./gitCommands.sh branch '%s'" %(branch_name)], shell=True)
 	p.wait()
 
 def gitCheckout(branch_name):
-	p = subprocess.Popen(args=['./gitCommands.sh checkout ' + branch_name], shell=True)
+	p = subprocess.Popen(args=["./gitCommands.sh checkout '%s'" %(branch_name)], shell=True)
 	p.wait()
 
