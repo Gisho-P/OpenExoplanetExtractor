@@ -39,8 +39,3 @@ def gitPullRequest(branch_name):
 	      }
 
 	request = requests.post(url, json.dumps(data), auth=('T01test', 'passorfail1'))
-
-gitPullRequest("11-29-15-38")
-
-
-#a02f89cd8bca565ae600e30b1388bc57954e0a1a
