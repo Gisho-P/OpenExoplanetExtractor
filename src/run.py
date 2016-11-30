@@ -125,6 +125,7 @@ def run(argv):
             print(commit_message)
             gitCommit(commit_message)
             gitPush()
+            gitPullRequest(branch_name)
 
 
 
