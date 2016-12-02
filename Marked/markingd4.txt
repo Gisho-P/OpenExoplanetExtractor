@@ -1,0 +1,98 @@
+CSCC01 Deliverable 4 Marking Guide
+-----------------------------------
+
+Project Management:   (18/20%)
+
+	[see deliverable 3 comments]
+  Release plan: 3/3
+    - each release corresponds to end of Sprint
+    - project fully laid out:
+      for each release date, list of user stories to implement
+    - project velocity specified and used
+    - highest priority user stories first modulo dependencies
+    - reasonable goals for each release
+  
+  Product Backlog:a 3/3
+    - user stories follow the correct format.
+    - user stories, together, reflect all the user requirements (from
+      all personas).
+    - user stories correspond to actual requirements (no "invented"
+      features).
+    - user stories contain enough information for devs to estimate how
+      long it would take to implement it.
+    - each user story addresses one specific requirement (no "world
+      peace" stories).
+
+  Sprint Backlog(s): 2/2
+     - user stories taken from the Product Backlog
+     - estimated costs
+     - estimated values
+
+  Sprint Plan(s): 3/3
+    - user stories divided into tasks when appropriate.
+    - each Sprint Plan contains all the necessary information:
+        who is working on which task on which day 
+    - sum of costs of user stories in the sprint = project velocity
+    - good planning decisions
+
+  Use of Task Board: 2/2
+    - correct format of task boards
+    - snapshots in the begginning and end of each Sprint are provided
+    
+  Use of Burndown Charts: 1/3
+  *-2 no snapshots of beginning of burndown chart
+    - snapshots in the begginning and end of each Sprint are provided
+    - correctness of burndown charts
+
+  Use of Repo: 2/2
+      (including good use of branching from now on!)
+
+  Use of communication tools: 2/2
+     - evidence of using communication tools of their choice effectively
+
+
+Design and Implementation:   (4/30%)
+
+   System Design: (2/5)
+   *-3 system design not detailed enough
+      - good modular design
+      - general and easy to extend
+      - it is clear how the current implementation is going to be
+        extended into an application that satisfies the client's needs
+
+   Implementation:
+   (0/10)
+   *-1 no module named urllib.request?  crashed
+     - 0 marks if it doesn't run
+     - most of the features are either fully implemented of nearly implemented
+     - quality and maturity of code
+
+
+Verification and Validation:   (13/25%)
+
+     - quality of unit tests: (3/10)
+     *-7 missing unit tests for many classes
+         - good coverage
+	 - no redundancy
+     - code review activities and outcomes: (5/10)
+     *-5 could not access video
+         - each review follows a checklist (not necessarily the example one, but the same checklist for all)
+	 - each review is thorough
+	 - evidence of addressing the outcomes of the review
+	 - the video demonstrates an effective process used for the review/collection meeting
+     - validation activities and outcomes: (5/5)
+          - evidence of feedback from the user
+	  - evidence of addressing feedback from the user
+
+
+Report:  (12/15%)
+
+  - well-presented, is easy to read and to navigate
+  - spelling and grammar
+  - looks professional
+  - quality of the README file
+  *-3 README doesn't say which code to run
+
+
+Interview:  (7/10%)
+*-3 program was crashing because of unimplemented feature
