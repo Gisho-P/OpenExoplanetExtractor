@@ -34,4 +34,4 @@ How to run:
 
 2) Put all the systems class given from hanno(the .xml file) into a directory called systems
 
-3) Then start running the code
+3) Call run.py -u [nasa/eu]
