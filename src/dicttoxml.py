@@ -10,6 +10,7 @@ This module works with both Python 2 and 3.
 """
 
 from __future__ import unicode_literals
+import lxml.etree
 
 __version__ = '1.7.4'
 version = __version__
@@ -404,5 +405,7 @@ def dicttoxml(obj, root=True, custom_root='root', ids=False, attr_type=True,
     )
     else:
         addline(convert(obj, ids, attr_type, item_func, cdata, parent=''))
-    return ''.join(output)
+    returnval = ''.join(output)
+    returntree = lxml.etree.fromstring(returnval)
+    return lxml.etree.tostring(returntree, pretty_print = True).decode('UTF-8')
 

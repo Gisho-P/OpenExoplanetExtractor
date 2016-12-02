@@ -1,10 +1,10 @@
 #!/bin/bash
 if [ $1 = "clone" ]
 then
-	if [ -d ./systems ]
+	if [ -d "./systems/open_exoplanet_catalogue" ] ;
 	then
-		cd ./systems
-		git pull
+		cd ./systems/open_exoplanet_catalogue
+		git pull https://T01test:passorfail1@github.com/T01test/open_exoplanet_catalogue.git
 		exit
 	else
 		mkdir ./systems
@@ -19,7 +19,7 @@ if [ $1 = "pull" ]
 then
 	if [ -d ./systems ]
 	then
- 		cd systems
+ 		cd systems/open_exoplanet_catalogue
 		git pull
 	else
 		mkdir ./systems
@@ -33,7 +33,7 @@ fi
 
 if [ $1 = "push" ]
 then
-	cd ./systems
+	cd systems/open_exoplanet_catalogue/systems
 	git push https://T01test:passorfail1@github.com/T01test/open_exoplanet_catalogue.git
 	exit
 fi
@@ -44,48 +44,31 @@ fi
 
 if [ $1 = "commit" ]
 then
-	cd systems
-	message=""
-	shift
-	for i in $*
-	do
-		message=$message" "$i
-	done
-	git commit -m "$message"
+	cd systems/open_exoplanet_catalogue/
+	git commit -m "$2"
 	exit
 fi
 
 
 
-
-
-
 if [ $1 = "add" ]
 then
-	if [ $2 = '.' ]
-	then
-		cd systems
-		git add $2
-	else
-		shift
-		cd systems
-		for i in $*
-		do
-			git add $i
-		done
-	fi
+	cd systems/open_exoplanet_catalogue/systems
+	git add "$2.xml"
 fi
+
 
 if [ $1 = "branch" ]
 then
-	cd systems
-	git branch $2
-	git checkout $2
-	git push https://T01test:passorfail1@github.com/T01test/open_exoplanet_catalogue.git $2
+	cd systems/open_exoplanet_catalogue
+	git branch "$2"
+	git checkout "$2"
+	git push --set-upstream https://T01test:passorfail1@github.com/T01test/open_exoplanet_catalogue.git "$2"
 fi
+
 
 if [ $1 = "checkout" ]
 then
-	cd systems
-	git checkout $2
+	cd systems/open_exoplanet_catalogue
+	git checkout "$2"
 fi
