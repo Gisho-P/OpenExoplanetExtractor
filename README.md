@@ -28,10 +28,49 @@ Evidence for requesting a validation:  ./ValidationRequest.jpg
 
 Evidence that client has validated:    ./ClientValidation.jpg
 
+Deliverable 5:
+
+Code inspection video: https://drive.google.com/open?id=0BxkAisqajmKCeTk5TVdSOV80cVE
+
+Evidence for requesting validation: ./ValidationRequest2.jpg
+
+Evidence that client has validated: ./ClientValidation2.jpg
+
+
 How to run:
 
-1) Install all the .py files in one directory or clone it in a directory
+1) Open a terminal window, Clone repository
 
-2) Put all the systems class given from hanno(the .xml file) into a directory called systems
+2) install the following packages and dependancies
 
-3) Call run.py -u [nasa/eu]
+sudo apt-get install pip
+
+pip install requests
+
+sudo apt-get install python3-lxml
+
+sudo apt-get install libxml2-dev libxslt-dev python-dev
+
+pip install lxml
+
+3) cd into src folder of repo
+
+4) call application using:
+
+--run merge with NASA--
+
+python3 run.py -u NASA
+
+--change auto conflict resolve to my conflict--
+
+python3 run.py -r m
+
+--turn on auto resolve--
+
+python3 run.py -a on
+
+--set frequency of auto update to 5 hours--
+
+python3 run.py -f 5
+
+
