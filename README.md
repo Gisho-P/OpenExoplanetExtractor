@@ -44,27 +44,32 @@ How to run:
 2) install the following packages and dependancies
 
 sudo apt-get install pip
+
 pip install requests
+
 sudo apt-get install python3-lxml
+
 sudo apt-get install libxml2-dev libxslt-dev python-dev
+
 pip install lxml
 
 4) cd into src folder of repo
 
-5) call application using: 
-run merge with NASA:
+5) call application using:
+
+--run merge with NASA--
 
 python3 run.py -u NASA
 
-change auto conflict resolve to my conflict:
+--change auto conflict resolve to my conflict--
 
 python3 run.py -r m
 
-turn on auto resolve:
+--turn on auto resolve--
 
 python3 run.py -a on
 
-set frequency of auto update to 5 hours:
+--set frequency of auto update to 5 hours--
 
 python3 run.py -f 5
 
