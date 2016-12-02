@@ -122,11 +122,11 @@ def run(argv):
 
             commit_message = "%s: update, Updated/Added %d systems" % (
                 '{:%Y-%b-%d~%H:%M:%S}'.format(datetime.datetime.now()),
-                numUpdated)
+                numChanged)
         gitCommit(commit_message)
         gitPush()
         gitPullRequest(branch_name)
-        print(update_log)
+        print("Merge complete: %s"%commit_message)
 
 
 
