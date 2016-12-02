@@ -53,9 +53,9 @@ sudo apt-get install libxml2-dev libxslt-dev python-dev
 
 pip install lxml
 
-4) cd into src folder of repo
+3) cd into src folder of repo
 
-5) call application using:
+4) call application using:
 
 --run merge with NASA--
 
