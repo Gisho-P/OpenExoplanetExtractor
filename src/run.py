@@ -81,10 +81,11 @@ def run(argv):
             print("%s is not a recognised repository" % (repo_name))
 
         if(ext_repo is not None):
-            numUpdated = numAdded = 0
+            numChanged = 0
             update_log = []
             gitClone()
-            branch_name = '{:%m-%d-%H-%M}'.format(datetime.datetime.now())
+            branch_name = '{:%Y-%b-%d_%H.%M.%S}'.format(datetime.datetime.now())
+
             gitBranch(branch_name)
 
 
@@ -105,12 +106,12 @@ def run(argv):
                     update_log.extend(oec_system_updates)
                     if len(oec_system_updates) != 0:
                         system_updated = True
-                        numUpdated += 1
+                        numChanged += 1
                 else:
                     # otherwise the system is added
                     oec_system = ext_system
                     oec_name = ext_system.getName()
-                    numAdded += 1
+                    numChanged += 1
                     system_updated = True
 
                 writeSystem(oec_name, oec_system)
@@ -119,13 +120,13 @@ def run(argv):
                 if system_updated:
                     gitAdd(oec_name)
 
-            commit_message = "%s: update, Updated %d systems, Added %d systems" % (
-                '{:%Y-%b-%d}'.format(datetime.datetime.now()),
-                numUpdated, numAdded)
-            print(commit_message)
-            gitCommit(commit_message)
-            gitPush()
-            gitPullRequest(branch_name)
+            commit_message = "%s: update, Updated/Added %d systems" % (
+                '{:%Y-%b-%d~%H:%M:%S}'.format(datetime.datetime.now()),
+                numUpdated)
+        gitCommit(commit_message)
+        gitPush()
+        gitPullRequest(branch_name)
+        print(update_log)
 
 
 

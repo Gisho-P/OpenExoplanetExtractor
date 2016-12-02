@@ -63,7 +63,7 @@ then
 	cd systems/open_exoplanet_catalogue
 	git branch "$2"
 	git checkout "$2"
-	git push --set-upstream https://a02f89cd8bca565ae600e30b1388bc57954e0a1a@github.com/T01test/open_exoplanet_catalogue.git "$2" 1> /dev/null/
+	git push --set-upstream https://a02f89cd8bca565ae600e30b1388bc57954e0a1a@github.com/T01test/open_exoplanet_catalogue.git "$2"
 fi
 
 

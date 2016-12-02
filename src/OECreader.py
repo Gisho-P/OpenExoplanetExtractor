@@ -34,6 +34,8 @@ def readSystem(system_names):
 
 def findSystem(system_names):
     ''' Read system xml of oec local copy'''
+    if(isinstance(system_names, str)):
+        system_names = [system_names]
     path = None
     # Search the directory for the name
     fileList = os.listdir('./systems/open_exoplanet_catalogue/systems')
