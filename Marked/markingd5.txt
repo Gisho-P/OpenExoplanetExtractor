@@ -1,10 +1,10 @@
-CSCC01 Deliverable 4 Marking Guide
+CSCC01 Deliverable 5 Marking Guide
 -----------------------------------
 
-Project Management:   (18/20%)
+Project Management:   (16/20%)
 
-	[see deliverable 3 comments]
-  Release plan: 3/3
+  Release plan: 2/3
+  *-1 no mention of sprint velocity
     - each release corresponds to end of Sprint
     - project fully laid out:
       for each release date, list of user stories to implement
@@ -12,7 +12,7 @@ Project Management:   (18/20%)
     - highest priority user stories first modulo dependencies
     - reasonable goals for each release
   
-  Product Backlog:a 3/3
+  Product Backlog: 3/3
     - user stories follow the correct format.
     - user stories, together, reflect all the user requirements (from
       all personas).
@@ -28,7 +28,9 @@ Project Management:   (18/20%)
      - estimated costs
      - estimated values
 
-  Sprint Plan(s): 3/3
+  Sprint Plan(s): 1/3
+  *-1 no mention of who is doing what
+  *-1 decsription of tasks isn't present
     - user stories divided into tasks when appropriate.
     - each Sprint Plan contains all the necessary information:
         who is working on which task on which day 
@@ -39,60 +41,59 @@ Project Management:   (18/20%)
     - correct format of task boards
     - snapshots in the begginning and end of each Sprint are provided
     
-  Use of Burndown Charts: 2/3
-  *-1 no snapshots of beginning of burndown chart
+  Use of Burndown Charts: 2/2
     - snapshots in the begginning and end of each Sprint are provided
     - correctness of burndown charts
 
-  Use of Repo: 2/2
+  Use of Repo: 1/2
+  *-1 creation of branches seems arbitrary
       (including good use of branching from now on!)
 
   Use of communication tools: 2/2
      - evidence of using communication tools of their choice effectively
 
 
-Design and Implementation:   (4/30%)
+Design and Implementation:   (45/50%)
 
-   System Design: (2/5)
-   *-3 system design not detailed enough
+   System Design: (8/10)
+   *-2 diagram not present
       - good modular design
       - general and easy to extend
       - it is clear how the current implementation is going to be
-        extended into an application that satisfies the client's needs
+        extended should the requirements evolve
 
-   Implementation:
-   (0/10)
-   *-1 no module named urllib.request?  crashed
+   Implementation: (37/40)
+   *-3 auto updates not implemented
      - 0 marks if it doesn't run
-     - most of the features are either fully implemented of nearly implemented
+     - all of the features are fully implemented
      - quality and maturity of code
 
 
-Verification and Validation:   (13/25%)
+Verification and Validation:  (14/20%)
 
-     - quality of unit tests: (3/10)
-     *-7 missing unit tests for many classes
+     - quality of unit tests: (3/6)
+     *-3 still missing many unit tests
          - good coverage
 	 - no redundancy
-     - code review activities and outcomes: (5/10)
-     *-5 could not access video
+     - code review activities and outcomes: (10/10)
          - each review follows a checklist (not necessarily the example one, but the same checklist for all)
 	 - each review is thorough
 	 - evidence of addressing the outcomes of the review
 	 - the video demonstrates an effective process used for the review/collection meeting
-     - validation activities and outcomes: (5/5)
+     - validation activities and outcomes: (1/4)
+     *-3 Hanno had responded that auto updates were important
+     but this was not implemeneted
           - evidence of feedback from the user
 	  - evidence of addressing feedback from the user
 
 
-Report:  (12/15%)
+Report:  (10/10%)
 
   - well-presented, is easy to read and to navigate
   - spelling and grammar
   - looks professional
   - quality of the README file
-  *-3 README doesn't say which code to run
 
 
-Interview:  (7/10%)
-*-3 program was crashing because of unimplemented feature
+Interview:  (9/10%)
+*-1 not much validation
