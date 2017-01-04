@@ -12,7 +12,7 @@ Project Management:   (18/20%)
     - highest priority user stories first modulo dependencies
     - reasonable goals for each release
   
-  Product Backlog:a 3/3
+  Product Backlog: 3/3
     - user stories follow the correct format.
     - user stories, together, reflect all the user requirements (from
       all personas).
@@ -62,20 +62,19 @@ Design and Implementation:   (4/30%)
 
    Implementation:
    (0/10)
-   *-1 no module named urllib.request?  crashed
+   -10 crashed no module named requests
      - 0 marks if it doesn't run
      - most of the features are either fully implemented of nearly implemented
      - quality and maturity of code
 
 
-Verification and Validation:   (13/25%)
+Verification and Validation:   (18/25%)
 
-     - quality of unit tests: (3/10)
-     *-7 missing unit tests for many classes
+     - quality of unit tests: (4/10)
+     *-6 missing unit tests for many classes
          - good coverage
 	 - no redundancy
-     - code review activities and outcomes: (5/10)
-     *-5 could not access video
+     - code review activities and outcomes: (10/10)
          - each review follows a checklist (not necessarily the example one, but the same checklist for all)
 	 - each review is thorough
 	 - evidence of addressing the outcomes of the review
